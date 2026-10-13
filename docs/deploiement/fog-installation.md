@@ -7,6 +7,8 @@ tags:
   - PXE
   - Windows 11
   - Linux
+validation: non_teste
+versions: 'FOG 1.5 / 1.6 : vérifier selon installation'
 ---
 
 # Installation et exploitation de FOG Project
@@ -22,7 +24,7 @@ tags:
 !!! danger "Sauvegarde et autorisation"
     Une tâche de déploiement remplace les données du disque cible. Vérifiez l'identité de la machine, l'image et le stockage avant toute opération. Utilisez exclusivement une infrastructure sur laquelle vous êtes autorisé à intervenir.
 
-Ce dossier suit le scénario technique du [guide FOG de MilesChristi](https://mileschristi.github.io/runbook/installations/fog-installation/). Sa rédaction et ses schémas sont originaux. Les indications concernant les chargeurs PXE, les règles de pare-feu et le multicast ont été complétées à partir de la documentation officielle FOG consultée en octobre 2026. La procédure n'a pas été exécutée dans un laboratoire pour cette publication.
+Ce dossier suit le scénario technique du [guide FOG de MilesChristi](https://mileschristi.github.io/runbook/installations/fog-installation/). Sa rédaction et ses schémas sont originaux. Les indications concernant les chargeurs PXE et les règles de pare-feu ont été complétées à partir de la documentation officielle FOG consultée en octobre 2026. La procédure n'a pas été exécutée dans un laboratoire pour cette publication.
 
 ## 1. Architecture et principe {#architecture}
 
@@ -79,9 +81,8 @@ Le pare-feu doit autoriser les services nécessaires entre les clients et le ser
 | 111, 20048 | TCP/UDP | Services RPC/NFS |
 | 2049 | TCP | Échanges NFS pour les images |
 | 21 et plage FTP passive configurée | TCP | Stockage et réplication selon les fonctions |
-| Ports du multicast, selon FOG | UDP | Distribution simultanée |
 
-Les règles NFS, FTP et multicast constituent un complément à la liste réduite du tutoriel d'origine. Référence : [pare-feu d'un serveur FOG](https://docs.fogproject.org/en/latest/kb/how-tos/firewall/).
+Les règles NFS et FTP constituent un complément à la liste réduite du tutoriel d'origine. Référence : [pare-feu d'un serveur FOG](https://docs.fogproject.org/en/latest/kb/how-tos/firewall/).
 
 ## 3. Installer FOG sur Linux {#installation}
 
@@ -259,7 +260,7 @@ sudo ufw allow 80/tcp
 # Autoriser 443/tcp si le service HTTPS est utilise.
 ```
 
-Pour capturer ou déployer, vérifiez aussi les flux NFS. Les fonctions de réplication et multicast nécessitent d'autres règles, détaillées dans la documentation officielle. Ces commandes ne remplacent pas un plan de filtrage adapté à votre sous-réseau.
+Pour capturer ou déployer, vérifiez aussi les flux NFS. Certaines fonctions de réplication nécessitent d'autres règles, détaillées dans la documentation officielle. Ces commandes ne remplacent pas un plan de filtrage adapté à votre sous-réseau.
 
 ## 5. Préparer la machine Windows maître {#windows}
 
@@ -378,7 +379,6 @@ Laissez la procédure se terminer. Au redémarrage, contrôlez l'ouverture de Wi
 | Le poste reste inconnu | Inventaire non exécuté | **Hosts → List All Hosts** |
 | La capture échoue | Image, NFS ou stockage | Association de l'image, espace et NFS |
 | Le déploiement échoue | Tâche ou disque cible | Configuration du poste et journaux |
-| Multicast bloqué | Service, ports ou réseau | Session, nœud, flux UDP |
 
 Commandes utiles sur Linux :
 
@@ -419,7 +419,6 @@ Suivez l'ordre du démarrage : **DHCP → ProxyDHCP → TFTP → HTTP(S) → sto
 - [Capturer une image](https://docs.fogproject.org/en/latest/kb/how-tos/capture-an-image/).
 - [Déployer une image](https://docs.fogproject.org/en/latest/kb/how-tos/deploy-an-image/).
 - [Pare-feu et ports FOG](https://docs.fogproject.org/en/latest/kb/how-tos/firewall/).
-- [Sessions multicast, FOG 1.6](https://docs.fogproject.org/en/latest/1.6/management/web/multicast/).
 
 **Illustrations.** Les sept captures d'écran proviennent du tutoriel d'origine et sont reproduites dans cette page avec l'autorisation déclarée par leur titulaire. Les deux schémas d'architecture et de cycle d'imagerie ont été réalisés spécialement pour cette documentation. Le texte conserve une rédaction originale.
 
