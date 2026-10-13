@@ -1,5 +1,17 @@
+---
+title: Linux
+description: Systèmes et journaux
+---
+
 # Linux
 
-Administration, services et journaux système.
+<div class="kb-doc-intro"><strong>Dans cette rubrique.</strong> Systèmes et journaux. Retrouvez ci-dessous les procédures disponibles.</div>
 
-Consultez les procédures dans le menu de cette rubrique.
+## Procédure disponible
+
+[Consulter les journaux Linux](journaux.md)
+
+!!! info "Enrichir cette catégorie"
+    La méthode pour ajouter un nouveau tutoriel est disponible dans le [guide de contribution](../contribuer/index.md).
+
+[Retour à l'accueil](../index.md)

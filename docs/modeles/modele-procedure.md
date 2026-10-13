@@ -1,36 +1,68 @@
+---
+title: Modèle de procédure
+description: Gabarit réutilisable pour les tutoriels informatiques.
+---
+
 # Modèle de procédure — à dupliquer
 
+<div class="kb-doc-meta"><span>Documentation</span><span>Modèle</span><span>À adapter</span></div>
+
 ## Objectif
-Décrire le résultat attendu.
 
-## Environnement et prérequis
-- Système et version :
-- Droits nécessaires :
-- Sauvegarde préalable :
-- Risques :
+Décrire le problème traité et le résultat attendu.
 
-## Procédure
+## Informations générales
 
-### Étape 1 — Vérification
-Décrire la commande et le résultat attendu.
+| Élément | Valeur |
+| --- | --- |
+| Produit / version | À compléter |
+| Environnement | À compléter |
+| Niveau | Initiation / Intermédiaire / Avancé |
+| Droits nécessaires | À compléter |
+| Dernière vérification | À compléter |
+
+## Prérequis et risques
+
+- Vérifier les droits nécessaires.
+- Préparer la sauvegarde ou le retour arrière si nécessaire.
+
+!!! warning "Précautions"
+    Expliquer les risques liés à l'intervention.
+
+## Étape 1 — Vérification initiale
+
+Décrire un premier contrôle.
 
 ```powershell
 Get-Date
 ```
 
-### Étape 2 — Action
-Expliquer les opérations.
+**Résultat attendu :** affichage de la date et de l'heure du poste.
 
-## Vérification du résultat
-Préciser les tests.
+## Étape 2 — Intervention
+
+Décrire les commandes, captures et effets.
+
+## Étape 3 — Validation
+
+Expliquer les tests qui confirment la réussite.
+
+## Problèmes possibles
+
+| Symptôme | Cause probable | Vérification |
+| --- | --- | --- |
+| À compléter | À compléter | À compléter |
 
 ## Retour arrière
-Indiquer la méthode de restauration.
+
+Décrire comment restaurer l'état précédent.
 
 ## Références
+
 - Documentation officielle.
 
 ## Historique
+
 | Date | Modification |
 | --- | --- |
-| AAAA-MM-JJ | Création |
+| AAAA-MM-JJ | Première version |

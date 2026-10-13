@@ -1,9 +1,25 @@
-# Documentation informatique
+# IT Knowledge Base — Documentation informatique
 
-Site de tutoriels hébergé sur GitHub Pages : https://petrus-canisius.github.io/tutos-informatique/
+Site public : https://petrus-canisius.github.io/tutos-informatique/
 
-Écrire les procédures dans `docs/`, mettre à jour la navigation dans `zensical.toml`, puis valider sur `main`.
+La base de connaissances est publiée avec Zensical, GitHub Pages et GitHub Actions.
 
-L'onglet **Actions** publie automatiquement les modifications.
+## Fonctionnement
 
-Ne jamais publier d'identifiants, de secrets ou de données sensibles.
+Les procédures sont dans `docs/`. La navigation et l'identité générale sont dans `zensical.toml`. La page d'accueil se trouve dans `docs/index.md`.
+
+Le design est dans `docs/stylesheets/extra.css`. La recherche d'accueil utilise `docs/javascripts/site.js`. Le favicon est dans `docs/images/favicon.svg`.
+
+## Ajouter une procédure
+
+1. Créer un fichier Markdown dans la catégorie concernée.
+2. Suivre `docs/modeles/modele-procedure.md`.
+3. Ajouter son chemin à la liste `nav` du fichier `zensical.toml`.
+4. Enregistrer les modifications sur `main`.
+5. Contrôler le résultat dans GitHub Actions.
+
+Voir également le guide de contribution sur le site.
+
+## Sécurité
+
+Le dépôt est public. Ne jamais y publier des secrets, clés privées, identifiants, informations personnelles ou captures confidentielles. Les tutoriels d'exemple nécessitent une validation en situation réelle.
