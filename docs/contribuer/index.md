@@ -25,11 +25,7 @@ Dans `zensical.toml`, ajoutez le chemin du fichier dans la section `nav`, par ex
 { "Diagnostic VPN" = "reseaux/diagnostic-vpn.md" },
 ```
 
-## 4. Renseigner la fiabilité
-
-Dans l'en-tête de la page, indiquer le système, le niveau et les versions concernés. Le statut « non_teste » indique une procédure non exécutée en laboratoire ; ne renseigner « derniere_verification » qu'après un contrôle réel. Le catalogue et les annonces sont reconstruits automatiquement lors du déploiement.
-
-## 5. Publier
+## 4. Publier
 
 Enregistrez les modifications avec **Commit changes**. Vérifiez la publication dans l'[onglet Actions](https://github.com/Petrus-Canisius/tutos-informatique/actions).
 

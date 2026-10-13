@@ -8,27 +8,24 @@ repo_name = "Petrus-Canisius / Documentation"
 edit_uri = "edit/main/docs/"
 copyright = "Documentation technique - Petrus-Canisius"
 extra_css = ["stylesheets/extra.css", "stylesheets/memoire.css", "stylesheets/fog.css"]
-extra_javascript = ["javascripts/site.js", "javascripts/memoire.js", "javascripts/features.js", "javascripts/tools.js"]
+extra_javascript = ["javascripts/site.js", "javascripts/memoire.js"]
 nav = [
   { "Accueil" = "index.md" },
   { "Systèmes" = [
     { "Windows" = ["windows/index.md", { "Maintenance Windows" = "windows/maintenance.md" }] },
-    { "Windows Server" = ["windows-server/index.md", { "Diagnostic DNS et AD" = "windows-server/dns-ad.md" }, { "Diagnostic GPO" = "windows-server/gpo-diagnostic.md" }] },
+    { "Windows Server" = ["windows-server/index.md", { "Diagnostic DNS et AD" = "windows-server/dns-ad.md" }] },
     { "Linux" = ["linux/index.md", { "Journaux Linux" = "linux/journaux.md" }] },
     { "Déploiement et gestion de parc" = ["deploiement/index.md", { "FOG Project" = "deploiement/fog-installation.md" }] },
-    { "Virtualisation" = ["virtualisation/index.md", { "Contrôles Proxmox" = "virtualisation/proxmox-controles.md" }] },
   ] },
   { "Réseaux" = ["reseaux/index.md", { "Diagnostic réseau" = "reseaux/diagnostic.md" }] },
   { "Automatisation" = [
     { "PowerShell" = ["powershell/index.md", { "Premiers scripts" = "powershell/scripts.md" }] },
     { "Git et GitHub" = ["git-github/index.md", { "Premiers pas avec Git" = "git-github/premiers-pas.md" }] },
   ] },
-  { "Sécurité" = ["securite/index.md", { "Bonnes pratiques" = "securite/bonnes-pratiques.md" }, { "OSINT" = ["osint/index.md", { "Collecte passive" = "osint/collecte-passive.md" }] }] },
+  { "Sécurité" = ["securite/index.md", { "Bonnes pratiques" = "securite/bonnes-pratiques.md" }] },
   { "Support" = ["depannage/index.md", { "Fiche d'incident" = "depannage/fiche-incident.md" }] },
   { "Contribuer" = ["contribuer/index.md", { "Modèle de procédure" = "modeles/modele-procedure.md" }] },
   { "Mémoire de fin d’études" = "memoire/index.md" },
-  { "Recherche avancée" = "recherche-avancee.md" },
-  { "Outils interactifs" = [{ "Diagnostics guidés" = "depannage/assistant.md" }, { "Schémas réseau" = "outils/schemas.md" }] },
   { "Nouveautés" = "nouveautes.md" },
 ]
 

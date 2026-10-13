@@ -1,12 +1,6 @@
 ---
 title: Modèle de procédure
 description: Gabarit réutilisable pour les tutoriels informatiques.
-# Métadonnées facultatives du catalogue :
-# niveau: Intermédiaire
-# systeme: Windows
-# versions: Windows Server 2022
-# validation: non_teste
-# derniere_verification: ''
 ---
 
 # Modèle de procédure — à dupliquer
@@ -66,10 +60,6 @@ Décrire comment restaurer l'état précédent.
 ## Références
 
 - Documentation officielle.
-
-## Publication automatique
-
-Une nouvelle procédure ajoutée à docs/ et à la navigation déclenche une entrée dans le catalogue ainsi qu'une alerte pendant 14 jours. Les dates de création et de modification proviennent de Git. La date de vérification technique reste distincte et doit être saisie uniquement après test réel.
 
 ## Historique
 
