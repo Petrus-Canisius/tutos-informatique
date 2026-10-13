@@ -29,3 +29,7 @@ Le dépôt est public. Ne jamais y publier des secrets, clés privées, identifi
 Le mémoire est consultable à l'adresse `/memoire/` au moyen de 47 images WebP filigranées dans `docs/memoire/pages/`. La liseuse se trouve dans `docs/memoire/index.md`, avec les scripts et styles `docs/javascripts/memoire.js` et `docs/stylesheets/memoire.css`.
 
 **Le PDF original n'est pas stocké dans ce dépôt.** Les images publiques peuvent toutefois être enregistrées ou capturées : un site statique ne peut garantir l'absence de copies.
+
+## Déploiement et gestion de parc
+
+La documentation FOG Project se trouve dans `docs/deploiement/fog-installation.md`, avec une page de rubrique et deux schémas SVG originaux. Les captures originales de MilesChristi sont citées par des liens vers son dépôt GitHub, sans copie locale. Les fichiers PXE doivent être adaptés à la version FOG réellement utilisée.

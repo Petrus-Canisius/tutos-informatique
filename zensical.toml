@@ -7,7 +7,7 @@ repo_url = "https://github.com/Petrus-Canisius/tutos-informatique"
 repo_name = "Petrus-Canisius / Documentation"
 edit_uri = "edit/main/docs/"
 copyright = "Documentation technique - Petrus-Canisius"
-extra_css = ["stylesheets/extra.css", "stylesheets/memoire.css"]
+extra_css = ["stylesheets/extra.css", "stylesheets/memoire.css", "stylesheets/fog.css"]
 extra_javascript = ["javascripts/site.js", "javascripts/memoire.js"]
 nav = [
   { "Accueil" = "index.md" },
@@ -15,6 +15,7 @@ nav = [
     { "Windows" = ["windows/index.md", { "Maintenance Windows" = "windows/maintenance.md" }] },
     { "Windows Server" = ["windows-server/index.md", { "Diagnostic DNS et AD" = "windows-server/dns-ad.md" }] },
     { "Linux" = ["linux/index.md", { "Journaux Linux" = "linux/journaux.md" }] },
+    { "Déploiement et gestion de parc" = ["deploiement/index.md", { "FOG Project" = "deploiement/fog-installation.md" }] },
   ] },
   { "Réseaux" = ["reseaux/index.md", { "Diagnostic réseau" = "reseaux/diagnostic.md" }] },
   { "Automatisation" = [

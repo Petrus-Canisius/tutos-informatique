@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-labelledby="title desc">
+<title id="title">Architecture FOG : DHCP existant, dnsmasq et serveur FOG</title><desc id="desc">Un client PXE reçoit la configuration IP du serveur DHCP, les informations de démarrage de dnsmasq ProxyDHCP et les fichiers d'imagerie du serveur FOG.</desc>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#2879b4"/></marker><style>.a{font:bold 23px Arial,sans-serif;fill:#193754}.b{font:17px Arial,sans-serif;fill:#526e86}.c{font:bold 17px Arial,sans-serif;fill:#2776a6}</style></defs>
+<rect width="1200" height="440" rx="23" fill="#f2f7fc"/>
+<rect x="34" y="78" width="239" height="274" rx="17" fill="#fff" stroke="#c6d7e7" stroke-width="3"/><rect x="71" y="108" width="165" height="111" rx="12" fill="#123b60"/><rect x="86" y="122" width="136" height="83" rx="6" fill="#c6e7f7"/><path d="M150 220v27m-48 0h96" fill="none" stroke="#527d9c" stroke-width="7" stroke-linecap="round"/><text x="153" y="289" class="a" text-anchor="middle">Poste PXE</text><text x="153" y="316" class="b" text-anchor="middle">BIOS ou UEFI</text>
+<rect x="352" y="35" width="330" height="130" rx="15" fill="#e7f2ff" stroke="#adc9e6" stroke-width="3"/><text x="517" y="82" class="a" text-anchor="middle">DHCP existant</text><text x="517" y="113" class="b" text-anchor="middle">Adresse IP et réseau</text>
+<rect x="352" y="213" width="330" height="130" rx="15" fill="#e6f8f3" stroke="#abd4c6" stroke-width="3"/><text x="517" y="263" class="a" text-anchor="middle">dnsmasq</text><text x="517" y="296" class="b" text-anchor="middle">ProxyDHCP et PXE</text>
+<rect x="772" y="77" width="393" height="274" rx="17" fill="#fff" stroke="#c6d7e7" stroke-width="3"/><rect x="808" y="101" width="321" height="62" rx="11" fill="#143b60"/><text x="969" y="143" text-anchor="middle" font-family="Arial" font-size="25" font-weight="700" fill="#fff">Serveur FOG</text>
+<rect x="810" y="186" width="317" height="40" rx="8" fill="#e6f2fb"/><text x="969" y="212" class="b" text-anchor="middle">TFTP : chargeur PXE</text>
+<rect x="810" y="238" width="317" height="40" rx="8" fill="#e6f2fb"/><text x="969" y="264" class="b" text-anchor="middle">HTTP(S) : gestion</text>
+<rect x="810" y="289" width="317" height="40" rx="8" fill="#e6f2fb"/><text x="969" y="315" class="b" text-anchor="middle">NFS : images systèmes</text>
+<path d="M273 120L341 101" fill="none" stroke="#2879b4" stroke-width="4" marker-end="url(#a)"/><path d="M273 274h67" fill="none" stroke="#2879b4" stroke-width="4" marker-end="url(#a)"/><path d="M684 275l76-1" fill="none" stroke="#2879b4" stroke-width="4" marker-end="url(#a)"/>
+<path d="M685 111l74-1" fill="none" stroke="#2879b4" stroke-width="4" marker-end="url(#a)"/>
+<text x="300" y="89" class="c">1</text><text x="300" y="257" class="c">2</text><text x="724" y="256" class="c">3</text>
+<text x="600" y="404" class="b" text-anchor="middle">Architecture de principe : vérifier les rôles et les ports dans votre environnement.</text>
+</svg>

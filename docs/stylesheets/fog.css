@@ -1,0 +1,24 @@
+/* Cartes et bandeaux de FOG Project */
+.fog-hero{display:flex;justify-content:space-between;gap:1.5rem;align-items:center;background:linear-gradient(120deg,#112742,#1a496c);border-radius:17px;padding:1.7rem;color:white;margin:0 0 1.2rem}
+.fog-eyebrow{font-weight:800;font-size:.58rem;letter-spacing:.13em;color:#8bd7ec}
+.md-typeset p.fog-hero-title{font-size:1.25rem;font-weight:780;line-height:1.35;color:#fff;margin:.45rem 0 .8rem}
+.md-typeset .fog-hero p:not(.fog-hero-title){font-size:.74rem;color:#c4dce9;line-height:1.6;margin:0}
+.fog-hero-monogram{border:1px solid #a8d9ef59;border-radius:13px;min-width:144px;padding:1rem;font-size:2rem;line-height:1.1;font-weight:850;text-align:center;background:#ffffff0c}
+.fog-hero-monogram small{display:block;font-size:.58rem;letter-spacing:.27em;color:#c3e0ea;margin-top:.3rem}
+.fog-badges{display:flex;gap:.36rem;flex-wrap:wrap;margin-top:1rem}
+.fog-badges span{color:#dbf1ff;border:1px solid #a6d5f04a;background:#ffffff0c;border-radius:20px;padding:.22rem .58rem;font-size:.55rem}
+.fog-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem;margin:1rem 0 1.4rem}
+.fog-summary>div{display:flex;flex-direction:column;gap:.3rem;border:1px solid var(--kb-edge,#dce7f0);background:var(--kb-panel,#fff);border-radius:11px;padding:.85rem}
+.fog-summary strong{font-size:.72rem;color:var(--kb-ink,#172c41)}
+.fog-summary span{font-size:.64rem;color:var(--kb-muted,#64798e);line-height:1.55}
+.md-typeset a.fog-source-link{display:inline-block;margin:.18rem 0 .65rem;padding:.45rem .65rem;border:1px solid #a5d0ed;background:var(--kb-soft,#f4f9ff);border-radius:8px;font-size:.66rem;font-weight:750;color:#2677be;text-decoration:none}
+.md-typeset a.fog-source-link:hover{border-color:#2477be}
+.fog-index-item{display:flex;align-items:start;gap:1rem;margin:1.1rem 0;padding:1.15rem;background:var(--kb-panel,#fff);border:1px solid var(--kb-edge,#dae6ef);border-radius:12px}
+.fog-index-icon{display:grid;place-items:center;min-width:72px;min-height:72px;background:linear-gradient(125deg,#112e48,#3185b7);color:#fff;border-radius:13px;font-weight:800;font-size:1.1rem}
+.md-typeset .fog-index-item h2{font-size:1rem;border:0;margin:.05rem 0 .5rem}
+.md-typeset .fog-index-item p{font-size:.72rem;color:var(--kb-muted,#718396);line-height:1.6;margin:0}
+.fog-index-tags{display:flex;gap:.38rem;flex-wrap:wrap;margin:.65rem 0 0}
+.fog-index-tags span{font-size:.57rem;color:#2677be;background:var(--kb-soft,#f3f7ff);border-radius:15px;padding:.16rem .42rem}
+.md-typeset img[src$="architecture-pxe.svg"],.md-typeset img[src$="cycle-images.svg"]{width:100%;border:1px solid #d9e5ef;border-radius:13px;background:#f3f7fc;padding:.28rem}
+.md-typeset .fog-summary,.md-typeset .fog-index-item{max-width:100%}
+@media(max-width:760px){.fog-summary{grid-template-columns:1fr}.fog-hero-monogram{display:none}.fog-hero{padding:1.25rem}.fog-index-item{flex-direction:column}}

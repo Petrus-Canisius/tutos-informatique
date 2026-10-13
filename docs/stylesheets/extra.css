@@ -92,3 +92,6 @@
 @media(max-width:740px){.kb-hero{padding:1.45rem 1rem;border-radius:12px;}.md-typeset .kb-hero h1{font-size:1.7rem;}.kb-split{grid-template-columns:1fr;}}
 @media(max-width:440px){.kb-grid{grid-template-columns:1fr;}.md-typeset a.kb-card{min-height:95px;display:grid;grid-template-columns:43px 1fr 16px;align-items:center;}.kb-card small{grid-column:2;}.kb-card-arrow{grid-column:3;grid-row:1;}}
 @media(prefers-reduced-motion:reduce){.kb-home *{transition:none!important;}}
+
+/* Iconographie de la nouvelle rubrique Déploiement */
+.kb-card:nth-child(9) .kb-card-icon{background:#e1f4ff;color:#247cae;}
