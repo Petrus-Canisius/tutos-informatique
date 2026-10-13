@@ -50,7 +50,7 @@ hide:
     <p class="mbr-reader-note">Lecture sur écran uniquement. Les boutons de téléchargement et d'impression du PDF original ne sont pas proposés.</p>
   </section>
   <aside class="mbr-side" aria-label="Sommaire du mémoire">
-    <div class="mbr-side-title"><strong>Sommaire de lecture</strong><span>Sélectionner un chapitre</span></div>
+    <div class="mbr-side-title"><strong>Sommaire de lecture</strong><span>Sélectionner un chapitre</span></div><p class="mbr-sommaire-description">Parcours du mémoire : contexte et problématique, gestion des accès à privilèges, séparation des niveaux, démonstration et conclusions. Les numéros renvoient aux pages du document de 2021.</p>
     <nav class="mbr-chapters">
       <button type="button" data-mbr-page="1"><span>01</span> Couverture</button>
       <button type="button" data-mbr-page="4"><span>04</span> Introduction</button>

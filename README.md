@@ -8,7 +8,7 @@ La base de connaissances est publiée avec Zensical, GitHub Pages et GitHub Acti
 
 Les procédures sont dans `docs/`. La navigation et l'identité générale sont dans `zensical.toml`. La page d'accueil se trouve dans `docs/index.md`.
 
-Le design est dans `docs/stylesheets/extra.css`. La recherche d'accueil utilise `docs/javascripts/site.js`. Le favicon est dans `docs/images/favicon.svg`.
+Le design est dans `docs/stylesheets/extra.css`. La recherche d'accueil utilise `docs/javascripts/site.js`. Le favicon est dans `docs/images/favicon.svg`. Les alertes, le suivi de progression et les filtres sont dans `docs/javascripts/features.js`, les diagnostics et schémas dans `docs/javascripts/tools.js`.
 
 ## Ajouter une procédure
 
@@ -17,6 +17,8 @@ Le design est dans `docs/stylesheets/extra.css`. La recherche d'accueil utilise 
 3. Ajouter son chemin à la liste `nav` du fichier `zensical.toml`.
 4. Enregistrer les modifications sur `main`.
 5. Contrôler le résultat dans GitHub Actions.
+
+Le workflow exécute `python tools/build_catalog.py` avant Zensical. Le catalogue statique est généré depuis les pages Markdown et les dates de Git : il alimente les annonces automatiques sur 14 jours, les cartes de publication et la recherche avancée. Les marques de progression restent sur l'appareil du visiteur (localStorage). La date de vérification réelle ne doit pas être confondue avec la date du dernier commit. L'export PDF repose sur la fonction d'impression du navigateur.
 
 Voir également le guide de contribution sur le site.
 
