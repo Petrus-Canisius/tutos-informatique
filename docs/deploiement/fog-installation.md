@@ -367,23 +367,7 @@ Laissez la procédure se terminer. Au redémarrage, contrôlez l'ouverture de Wi
 !!! danger "Effacement du disque cible"
     La restauration remplace les données présentes. Un ciblage incorrect peut entraîner une perte définitive des fichiers qui n'ont pas été sauvegardés.
 
-## 9. Multicast {#multicast}
-
-La partie **Multicast** du tutoriel initial est inachevée. Cette section fournit uniquement une synthèse complémentaire issue de la [documentation FOG](https://docs.fogproject.org/en/latest/1.6/management/web/multicast/).
-
-Le multicast permet d'envoyer la même image à plusieurs machines dans un flux commun. Les postes doivent rejoindre une session compatible, et le réseau doit acheminer le trafic multicast jusqu'aux clients.
-
-Pour préparer un essai :
-
-1. Vérifiez la présence de l'image sur le nœud de stockage prévu.
-2. Contrôlez le fonctionnement de `FOGMulticastManager`.
-3. Assurez-vous que les flux UDP de la session sont autorisés.
-4. Créez une session pour un groupe de postes de laboratoire.
-5. Observez le nombre de clients connectés et le démarrage du transfert.
-
-La distribution multicast entre sites ne fonctionne pas automatiquement à travers un routeur, un VPN ou une liaison WAN. Le paramétrage précis dépend de la version FOG, de la topologie et du nœud maître concerné.
-
-## 10. Diagnostic et vérifications {#diagnostic}
+## 9. Diagnostic et vérifications {#diagnostic}
 
 | Symptôme | Cause à examiner | Contrôle |
 | --- | --- | --- |
@@ -421,7 +405,7 @@ Suivez l'ordre du démarrage : **DHCP → ProxyDHCP → TFTP → HTTP(S) → sto
 - [ ] Windows démarre et les applications fonctionnent.
 - [ ] Les identifiants initiaux ont été changés.
 
-## 11. Références et captures {#references}
+## 10. Références et captures {#references}
 
 **Scénario de départ**
 
