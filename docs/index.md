@@ -56,5 +56,9 @@ hide:
       <div class="kb-contribute-links"><a href="nouveautes/">Nouveautés</a><span>·</span><a href="https://github.com/Petrus-Canisius/tutos-informatique">GitHub</a></div>
     </aside>
   </section>
+<section class="kb-section kb-memo-feature" aria-label="Mémoire de fin d'études">
+  <div class="kb-memo-feature-mark"><span>TRAVAIL DE RECHERCHE · 2021</span><h2>Sécuriser une infrastructure Active Directory</h2><p>Un mémoire de 47 pages sur la gestion des comptes à privilèges, les modèles de tiering et leur mise en œuvre.</p></div>
+  <a href="memoire/">Consulter le mémoire <span aria-hidden="true">→</span></a>
+</section>
   <p class="kb-disclaimer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg> Site public : contrôlez les commandes avant exécution et ne publiez aucun secret.</p>
 </div>

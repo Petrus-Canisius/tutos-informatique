@@ -23,3 +23,9 @@ Voir également le guide de contribution sur le site.
 ## Sécurité
 
 Le dépôt est public. Ne jamais y publier des secrets, clés privées, identifiants, informations personnelles ou captures confidentielles. Les tutoriels d'exemple nécessitent une validation en situation réelle.
+
+## Mémoire de fin d'études
+
+Le mémoire est consultable à l'adresse `/memoire/` au moyen de 47 images WebP filigranées dans `docs/memoire/pages/`. La liseuse se trouve dans `docs/memoire/index.md`, avec les scripts et styles `docs/javascripts/memoire.js` et `docs/stylesheets/memoire.css`.
+
+**Le PDF original n'est pas stocké dans ce dépôt.** Les images publiques peuvent toutefois être enregistrées ou capturées : un site statique ne peut garantir l'absence de copies.

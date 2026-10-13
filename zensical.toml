@@ -7,8 +7,8 @@ repo_url = "https://github.com/Petrus-Canisius/tutos-informatique"
 repo_name = "Petrus-Canisius / Documentation"
 edit_uri = "edit/main/docs/"
 copyright = "Documentation technique — Petrus-Canisius"
-extra_css = ["stylesheets/extra.css"]
-extra_javascript = ["javascripts/site.js"]
+extra_css = ["stylesheets/extra.css", "stylesheets/memoire.css"]
+extra_javascript = ["javascripts/site.js", "javascripts/memoire.js"]
 nav = [
   { "Accueil" = "index.md" },
   { "Systèmes" = [
@@ -24,6 +24,7 @@ nav = [
   { "Sécurité" = ["securite/index.md", { "Bonnes pratiques" = "securite/bonnes-pratiques.md" }] },
   { "Support" = ["depannage/index.md", { "Fiche d'incident" = "depannage/fiche-incident.md" }] },
   { "Contribuer" = ["contribuer/index.md", { "Modèle de procédure" = "modeles/modele-procedure.md" }] },
+  { "Mémoire de fin d’études" = "memoire/index.md" },
   { "Nouveautés" = "nouveautes.md" },
 ]
 
