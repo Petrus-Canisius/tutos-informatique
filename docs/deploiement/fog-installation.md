@@ -87,63 +87,68 @@ Les règles NFS, FTP et multicast constituent un complément à la liste réduit
 
 ### Mettre en place le système
 
+!!! tip "Copier une commande"
+    Chaque encadré de terminal comporte un bouton **Copier**, visible en haut à droite. Utilisez les commandes dans le terminal indiqué et adaptez les paramètres propres à votre serveur.
+
 Sur une machine Linux dédiée, ouvrez une session disposant de sudo. Identifiez l'OS et l'adresse utilisée :
 
-\`\`\`bash
+```bash title="Terminal Linux"
 cat /etc/os-release
 ip -br address
-\`\`\`
+```
 
 Actualisez la liste des paquets, puis installez Git et curl :
 
-\`\`\`bash
+```bash title="Terminal Linux"
 sudo apt update
 sudo apt install -y git curl
-\`\`\`
+```
 
 Le tutoriel source inclut aussi une mise à niveau complète du système. Sur un serveur existant, cette opération nécessite une vérification d'impact et une fenêtre de maintenance.
 
 ### Télécharger le dépôt officiel
 
-\`\`\`bash
+```bash title="Terminal Linux"
 cd ~
 git clone https://github.com/FOGProject/fogproject.git fogproject-stable
 cd fogproject-stable
 git branch --show-current
 git rev-parse --short HEAD
-\`\`\`
+```
 
 Enregistrez la branche et le commit. Cela permettra de retrouver la version utilisée lors d'une maintenance ultérieure.
 
 ### Lancer l'installateur
 
-\`\`\`bash
+```bash title="Terminal Linux"
 cd bin
 sudo ./installfog.sh
-\`\`\`
+```
 
 Vérifiez soigneusement les réponses : système, interface réseau, adresse du serveur et choix du service DHCP. Dans notre configuration, le DHCP existant reste le seul service chargé d'attribuer des adresses.
 
 L'installateur peut demander d'initialiser ou de mettre à jour la base de données. Ouvrez alors l'interface dans un navigateur :
 
-\`\`\`text
+```text title="Adresse de l'interface FOG"
 http://ADRESSE_DU_SERVEUR/fog/management
-\`\`\`
+```
 
 L'adresse peut utiliser HTTPS, selon votre installation. Finalisez l'opération dans la page web **avant de valider la fin dans le terminal**.
 
 Après installation, connectez-vous avec les informations indiquées par votre propre programme d'installation. **Changez immédiatement les mots de passe initiaux.** Aucun identifiant par défaut ne doit rester exploitable.
 
-[Capture de l'installateur, sur le dépôt du tutoriel original](https://github.com/MilesChristi/runbook/blob/main/docs/assets/png.png){ .fog-source-link }
+![Installateur FOG, écran de configuration du serveur](assets/fog-installation/installation.jpg){ .fog-screenshot loading=lazy }
+
+*Capture 1. Étapes d'installation de FOG sur Linux.*
 
 ### Premier contrôle
 
 Vérifiez la présence de l'interface FOG depuis un poste du réseau d'administration. Sur Linux :
 
-\`\`\`bash
+```bash title="Terminal Linux"
 sudo systemctl --failed
 sudo ss -lntup
-\`\`\`
+```
 
 Relevez la version affichée dans **FOG Configuration → FOG Settings → General → FOG_VERSION**. La configuration des chargeurs dépend de ce paramètre.
 
@@ -153,32 +158,32 @@ Documentation officielle : [installation du serveur FOG](https://docs.fogproject
 
 ### Installer et identifier les services
 
-\`\`\`bash
+```bash title="Terminal Linux"
 sudo apt update
 sudo apt install -y dnsmasq
 dnsmasq --version
-\`\`\`
+```
 
 Avant de choisir les fichiers de démarrage, regardez ce qui est réellement installé dans le répertoire TFTP :
 
-\`\`\`bash
+```bash title="Terminal Linux"
 ls -lah /tftpboot
 find /tftpboot -maxdepth 3 -type f -name '*.efi'
-\`\`\`
+```
 
-Le guide source utilise notamment \`undionly.kpxe\` et \`ipxe.efi\`. Dans la documentation FOG publiée pour **1.6**, les exemples de fichiers sont différents, avec \`undionly.kkpxe\`, \`snponly.efi\` et une chaîne UEFI signée. **Il faut choisir les noms correspondant à la version effectivement installée.**
+Le guide source utilise notamment `undionly.kpxe` et `ipxe.efi`. Dans la documentation FOG publiée pour **1.6**, les exemples de fichiers sont différents, avec `undionly.kkpxe`, `snponly.efi` et une chaîne UEFI signée. **Il faut choisir les noms correspondant à la version effectivement installée.**
 
 ### Créer le fichier du ProxyDHCP
 
 Ouvrez un fichier de configuration dédié :
 
-\`\`\`bash
+```bash title="Terminal Linux"
 sudo nano /etc/dnsmasq.d/fog-proxy.conf
-\`\`\`
+```
 
 L'exemple suivant illustre **FOG 1.6**, sur un réseau de laboratoire et avec les fichiers de démarrage indiqués. Il nécessite une adaptation complète avant exécution.
 
-\`\`\`ini
+```ini title="Configuration dnsmasq"
 # ProxyDHCP, sans serveur DNS ni DHCP d'adressage.
 port=0
 log-dhcp
@@ -203,11 +208,11 @@ pxe-service=X86-64_EFI,"FOG UEFI 64",secureboot/snponly-shimx64.efi,192.0.2.10
 pxe-service=BC_EFI,"FOG UEFI PXE BC",secureboot/snponly-shimx64.efi,192.0.2.10
 
 dhcp-range=192.0.2.10,proxy
-\`\`\`
+```
 
-Cette configuration suppose que **le service TFTP est géré par FOG**, pas par dnsmasq. N'ajoutez pas \`enable-tftp\` sans raison : deux services à l'écoute du même port risquent d'entrer en conflit.
+Cette configuration suppose que **le service TFTP est géré par FOG**, pas par dnsmasq. N'ajoutez pas `enable-tftp` sans raison : deux services à l'écoute du même port risquent d'entrer en conflit.
 
-Les règles \`pxe-service\` peuvent être prioritaires sur \`dhcp-boot\` pour certains firmwares UEFI. Modifiez-les de manière cohérente. Le chargement d'un binaire signé ne suffit pas, à lui seul, à terminer la configuration Secure Boot.
+Les règles `pxe-service` peuvent être prioritaires sur `dhcp-boot` pour certains firmwares UEFI. Modifiez-les de manière cohérente. Le chargement d'un binaire signé ne suffit pas, à lui seul, à terminer la configuration Secure Boot.
 
 Source technique complémentaire : [dnsmasq ProxyDHCP pour FOG 1.6](https://docs.fogproject.org/en/latest/1.6/installation/network-setup/proxy-dhcp/).
 
@@ -215,30 +220,30 @@ Source technique complémentaire : [dnsmasq ProxyDHCP pour FOG 1.6](https://docs
 
 Commencez par tester la syntaxe :
 
-\`\`\`bash
+```bash title="Terminal Linux"
 sudo dnsmasq --test
-\`\`\`
+```
 
 Si aucune erreur n'est signalée :
 
-\`\`\`bash
+```bash title="Terminal Linux"
 sudo systemctl restart dnsmasq
 sudo systemctl enable dnsmasq
 sudo systemctl status dnsmasq --no-pager
-\`\`\`
+```
 
 En cas d'échec, lisez les journaux :
 
-\`\`\`bash
+```bash title="Terminal Linux"
 sudo journalctl -u dnsmasq -n 80 --no-pager
-\`\`\`
+```
 
 ### Vérifier le service TFTP
 
-\`\`\`bash
+```bash title="Terminal Linux"
 sudo ss -lunp | grep ':69'
 ls /tftpboot
-\`\`\`
+```
 
 Le serveur FOG doit proposer les fichiers attendus. Si le port 69 n'écoute pas ou si les fichiers sont absents, le client ne pourra pas charger l'environnement PXE.
 
@@ -246,13 +251,13 @@ Le serveur FOG doit proposer les fichiers attendus. Si le port 69 n'écoute pas 
 
 N'activez pas un pare-feu sur un serveur accessible seulement par SSH sans conserver d'abord le port d'administration. Le filtrage doit rester limité aux flux réellement nécessaires.
 
-\`\`\`bash
+```bash title="Terminal Linux"
 sudo ufw status verbose
 sudo ufw allow 69/udp
 sudo ufw allow 4011/udp
 sudo ufw allow 80/tcp
 # Autoriser 443/tcp si le service HTTPS est utilise.
-\`\`\`
+```
 
 Pour capturer ou déployer, vérifiez aussi les flux NFS. Les fonctions de réplication et multicast nécessitent d'autres règles, détaillées dans la documentation officielle. Ces commandes ne remplacent pas un plan de filtrage adapté à votre sous-réseau.
 
@@ -264,9 +269,9 @@ Le tutoriel original utilise **Windows 11 dans une VM Hyper-V**. Ce poste servir
 
 Une veille hybride peut compliquer la capture des volumes. Dans un terminal administrateur Windows :
 
-\`\`\`powershell
+```powershell title="PowerShell administrateur"
 powercfg /h off
-\`\`\`
+```
 
 Effectuez ensuite un arrêt complet du poste.
 
@@ -287,13 +292,17 @@ Démarrez le poste maître par le réseau. Après l'obtention de l'adresse IP et
 
 Choisissez **Quick Registration and Inventory** si cette option est disponible. Le système relève l'identité réseau et les principales informations matérielles.
 
-[Capture du menu d'enregistrement original](https://github.com/MilesChristi/runbook/blob/main/docs/assets/registration.png){ .fog-source-link }
+![Menu FOG : Quick Registration and Inventory](assets/fog-installation/menu-enregistrement.png){ .fog-screenshot loading=lazy }
+
+*Capture 2. Démarrage PXE et enregistrement rapide du poste.*
 
 ### Contrôler et renommer l'hôte
 
-Dans l'interface web, ouvrez **Hosts → List All Hosts**. La machine enregistrée doit apparaître dans la liste. Ouvrez sa fiche et attribuez-lui un nom clair, par exemple \`WIN11-MODELE\`.
+Dans l'interface web, ouvrez **Hosts → List All Hosts**. La machine enregistrée doit apparaître dans la liste. Ouvrez sa fiche et attribuez-lui un nom clair, par exemple `WIN11-MODELE`.
 
-[Capture de la liste des hôtes](https://github.com/MilesChristi/runbook/blob/main/docs/assets/registration00.png){ .fog-source-link }
+![Interface FOG : liste des hôtes enregistrés](assets/fog-installation/liste-hotes.png){ .fog-screenshot loading=lazy }
+
+*Capture 3. Inventaire des machines reconnues par FOG.*
 
 ### Rattacher le poste à un groupe
 
@@ -301,9 +310,13 @@ Dans FOG, les groupes facilitent le ciblage des machines. Créez un groupe corre
 
 Contrôlez son appartenance avant de planifier une tâche. Une bonne organisation évite de confondre machine de référence et poste de destination.
 
-[Capture de la création d'un groupe](https://github.com/MilesChristi/runbook/blob/main/docs/assets/registration01.png){ .fog-source-link }
+![Interface FOG : création d'un groupe de machines](assets/fog-installation/creation-groupe.png){ .fog-screenshot loading=lazy }
 
-[Capture de l'association du groupe à un hôte](https://github.com/MilesChristi/runbook/blob/main/docs/assets/registration02.png){ .fog-source-link }
+*Capture 4. Organisation des postes au moyen d'un groupe.*
+
+![Interface FOG : association d'un hôte au groupe](assets/fog-installation/association-groupe.png){ .fog-screenshot loading=lazy }
+
+*Capture 5. Rattachement de la machine Windows au groupe.*
 
 ## 7. Créer et capturer une image {#capture}
 
@@ -311,7 +324,9 @@ Contrôlez son appartenance avant de planifier une tâche. Une bonne organisatio
 
 Ouvrez **Images → Create New Image**. Indiquez un nom explicite et les paramètres correspondant au système installé et à la structure des partitions.
 
-[Capture de la création d'une image](https://github.com/MilesChristi/runbook/blob/main/docs/assets/capture00.png){ .fog-source-link }
+![Interface FOG : formulaire de création d'une image système](assets/fog-installation/creation-image.png){ .fog-screenshot loading=lazy }
+
+*Capture 6. Définition de l'image destinée à la capture.*
 
 ### Associer l'image à la machine
 
@@ -339,7 +354,9 @@ N'attachez pas d'ISO pour ce test de démarrage PXE. Connectez la VM au réseau 
 
 Au menu FOG, choisissez **Deploy Image** ou planifiez un déploiement depuis l'interface web selon la version et la politique d'accès. Utilisez uniquement un compte FOG autorisé, avec un mot de passe sécurisé. Ne réutilisez pas les identifiants par défaut diffusés dans certains anciens tutoriels.
 
-[Capture du menu de déploiement original](https://github.com/MilesChristi/runbook/blob/main/docs/assets/deploi00.png){ .fog-source-link }
+![Menu FOG : sélection de l'image à déployer](assets/fog-installation/menu-deploiement.png){ .fog-screenshot loading=lazy }
+
+*Capture 7. Sélection de l'image lors d'un démarrage PXE.*
 
 ### Valider la restauration
 
@@ -359,7 +376,7 @@ Le multicast permet d'envoyer la même image à plusieurs machines dans un flux 
 Pour préparer un essai :
 
 1. Vérifiez la présence de l'image sur le nœud de stockage prévu.
-2. Contrôlez le fonctionnement de \`FOGMulticastManager\`.
+2. Contrôlez le fonctionnement de `FOGMulticastManager`.
 3. Assurez-vous que les flux UDP de la session sont autorisés.
 4. Créez une session pour un groupe de postes de laboratoire.
 5. Observez le nombre de clients connectés et le démarrage du transfert.
@@ -372,7 +389,7 @@ La distribution multicast entre sites ne fonctionne pas automatiquement à trave
 | --- | --- | --- |
 | Le poste n'obtient pas d'IP | DHCP ou liaison | VLAN, bail, carte Ethernet |
 | Aucun menu PXE | ProxyDHCP ou chargeur incorrect | Journaux dnsmasq, type de firmware |
-| Échec du téléchargement | TFTP ou pare-feu | Port UDP 69, fichiers \`/tftpboot\` |
+| Échec du téléchargement | TFTP ou pare-feu | Port UDP 69, fichiers `/tftpboot` |
 | iPXE démarre, puis s'arrête | HTTP(S) ou chaîne d'amorçage | Services web et URL FOG |
 | Le poste reste inconnu | Inventaire non exécuté | **Hosts → List All Hosts** |
 | La capture échoue | Image, NFS ou stockage | Association de l'image, espace et NFS |
@@ -381,14 +398,14 @@ La distribution multicast entre sites ne fonctionne pas automatiquement à trave
 
 Commandes utiles sur Linux :
 
-\`\`\`bash
+```bash title="Terminal Linux"
 sudo systemctl --failed
 sudo systemctl status dnsmasq --no-pager
 sudo journalctl -u dnsmasq -n 100 --no-pager
 sudo ss -lntup
 sudo ss -lunp
 df -h
-\`\`\`
+```
 
 Suivez l'ordre du démarrage : **DHCP → ProxyDHCP → TFTP → HTTP(S) → stockage**. Chercher une erreur NFS alors que la machine n'a pas encore reçu son chargeur PXE ne permet pas d'avancer efficacement.
 
@@ -420,6 +437,6 @@ Suivez l'ordre du démarrage : **DHCP → ProxyDHCP → TFTP → HTTP(S) → sto
 - [Pare-feu et ports FOG](https://docs.fogproject.org/en/latest/kb/how-tos/firewall/).
 - [Sessions multicast, FOG 1.6](https://docs.fogproject.org/en/latest/1.6/management/web/multicast/).
 
-**Illustrations et droits.** Les schémas affichés dans cette procédure sont originaux. Les captures du guide source sont accessibles par des liens vers leur dépôt, sans copie dans ce site, car aucune licence de réutilisation explicite n'a été trouvée. Le texte est une nouvelle rédaction, fondée sur le périmètre technique du guide.
+**Illustrations.** Les sept captures d'écran proviennent du tutoriel d'origine et sont reproduites dans cette page avec l'autorisation déclarée par leur titulaire. Les deux schémas d'architecture et de cycle d'imagerie ont été réalisés spécialement pour cette documentation. Le texte conserve une rédaction originale.
 
 *Rédaction : octobre 2026. Procédure à tester sur les versions et matériels réellement utilisés.*

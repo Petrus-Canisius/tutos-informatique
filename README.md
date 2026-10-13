@@ -32,4 +32,4 @@ Le mémoire est consultable à l'adresse `/memoire/` au moyen de 47 images WebP 
 
 ## Déploiement et gestion de parc
 
-La documentation FOG Project se trouve dans `docs/deploiement/fog-installation.md`, avec une page de rubrique et deux schémas SVG originaux. Les captures originales de MilesChristi sont citées par des liens vers son dépôt GitHub, sans copie locale. Les fichiers PXE doivent être adaptés à la version FOG réellement utilisée.
+La documentation FOG Project se trouve dans `docs/deploiement/fog-installation.md`, avec une page de rubrique et deux schémas SVG originaux. Les sept captures réalisées pour le tutoriel d'origine sont intégrées localement avec l'autorisation déclarée du titulaire des droits. Les fichiers PXE doivent être adaptés à la version FOG réellement utilisée.
