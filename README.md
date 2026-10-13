@@ -4,6 +4,8 @@ Site public : https://petrus-canisius.github.io/tutos-informatique/
 
 La base de connaissances est publiée avec Zensical, GitHub Pages et GitHub Actions.
 
+**Une seule procédure technique est publiée : [Installer et exploiter FOG Project](https://petrus-canisius.github.io/tutos-informatique/deploiement/fog-installation/).** Les anciennes fiches d'exemple ont été retirées du site. Le mémoire et le modèle de rédaction sont conservés.
+
 ## Fonctionnement
 
 Les procédures sont dans `docs/`. La navigation et l'identité générale sont dans `zensical.toml`. La page d'accueil se trouve dans `docs/index.md`.

@@ -95,3 +95,6 @@
 
 /* Iconographie de la nouvelle rubrique Déploiement */
 .kb-card:nth-child(9) .kb-card-icon{background:#e1f4ff;color:#247cae;}
+
+/* Mise en avant de l'unique procédure actuellement publiée. */
+.kb-grid--single{grid-template-columns:minmax(0,365px)}
