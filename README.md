@@ -18,11 +18,13 @@ Le bandeau « Dernière procédure publiée » figure en haut de l'accueil. À c
 
 1. Créer un fichier Markdown dans la catégorie concernée.
 2. Suivre `docs/modeles/modele-procedure.md`.
-3. Ajouter son chemin à la liste `nav` du fichier `zensical.toml`.
+3. Ajouter le tutoriel à la liste `nav` de `zensical.toml` sous sa catégorie et à la liste « Procédures disponibles » de `docs/<categorie>/index.md`.
 4. Enregistrer les modifications sur `main`.
 5. Contrôler le résultat dans GitHub Actions.
 
-Voir également le guide de contribution sur le site.
+Les catégories vides sont de simples pages d'attente : elles ne correspondent pas à des procédures publiées. À l'heure actuelle, seule FOG Project est disponible sous « Déploiement et gestion de parc ». Le bandeau de l'accueil identifie les procédures référencées dans la navigation et ne considère pas ces pages d'index comme des tutoriels.
+
+Le guide de contribution interne est conservé dans `docs/contribuer/index.md`, mais n'est pas affiché sur l'accueil ou dans le menu.
 
 ## Sécurité
 

@@ -7,12 +7,21 @@ repo_url = "https://github.com/Petrus-Canisius/tutos-informatique"
 repo_name = "Petrus-Canisius / Documentation"
 edit_uri = "edit/main/docs/"
 copyright = "Documentation technique - Petrus-Canisius"
-extra_css = ["stylesheets/extra.css", "stylesheets/memoire.css", "stylesheets/fog.css", "stylesheets/latest-banner-v2.css"]
+extra_css = ["stylesheets/extra.css", "stylesheets/memoire.css", "stylesheets/fog.css", "stylesheets/latest-banner-v2.css", "stylesheets/categories-v1.css"]
 extra_javascript = ["javascripts/site.js", "javascripts/memoire.js", "javascripts/latest-procedure.js"]
 nav = [
   { "Accueil" = "index.md" },
-  { "Déploiement et gestion de parc" = ["deploiement/index.md", { "FOG Project" = "deploiement/fog-installation.md" }] },
-  { "Contribuer" = ["contribuer/index.md", { "Modèle de procédure" = "modeles/modele-procedure.md" }] },
+  { "Catégories" = [
+    { "Déploiement et gestion de parc" = ["deploiement/index.md", { "FOG Project" = "deploiement/fog-installation.md" }] },
+    { "Windows" = "windows/index.md" },
+    { "Windows Server" = "windows-server/index.md" },
+    { "Linux" = "linux/index.md" },
+    { "Réseaux" = "reseaux/index.md" },
+    { "Virtualisation" = "virtualisation/index.md" },
+    { "PowerShell et automatisation" = "powershell/index.md" },
+    { "Cybersécurité et OSINT" = "securite/index.md" },
+    { "Git et GitHub" = "git-github/index.md" },
+  ] },
   { "Mémoire de fin d’études" = "memoire/index.md" },
   { "Nouveautés" = "nouveautes.md" },
 ]
