@@ -72,5 +72,3 @@ Le mémoire date de 2021. Les technologies, recommandations et références pré
 
 La navigation fonctionne au clavier avec les flèches lorsque la liseuse est sélectionnée. Le zoom et le mode plein écran permettent de lire les schémas.
 
-!!! warning "Limite technique"
-    Un site public ne peut pas empêcher entièrement les captures d'écran, l'enregistrement des images ou leur récupération avec les outils du navigateur. Cette liseuse n'expose pas le PDF original, mais elle ne garantit pas une protection absolue contre la copie.
