@@ -10,7 +10,7 @@ hide:
 <div class="kb-home">
   <section class="kb-latest-banner" data-latest-procedure aria-labelledby="kb-latest-heading">
     <div class="kb-latest-icon" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;width:22px;height:22px;max-width:22px;max-height:22px" aria-hidden="true">
         <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path><path d="M10 21h4"></path>
       </svg>
     </div>
