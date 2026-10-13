@@ -1,4 +1,14 @@
+---
+description: "Appliquer des précautions de base aux comptes et systèmes."
+tags: ["Sécurité", "protection"]
+---
+
 # Bonnes pratiques de sécurité
+
+<div class="kb-doc-meta"><span>Sécurité</span><span>Tous niveaux</span><span>Exemple technique</span></div>
+
+<div class="kb-doc-intro"><strong>Objectif.</strong> Appliquer des précautions de base aux comptes et systèmes.</div>
+
 
 ## Comptes et accès
 - Activer une authentification multifacteur.

@@ -1,4 +1,14 @@
+---
+description: "Vérifier les serveurs DNS et les enregistrements utilisés par Active Directory."
+tags: ["Windows Server", "DNS"]
+---
+
 # Diagnostic DNS et Active Directory
+
+<div class="kb-doc-meta"><span>Windows Server</span><span>Intermédiaire</span><span>Exemple technique</span></div>
+
+<div class="kb-doc-intro"><strong>Objectif.</strong> Vérifier les serveurs DNS et les enregistrements utilisés par Active Directory.</div>
+
 
 ## Objectif
 Vérifier la résolution DNS et l'annonce des contrôleurs de domaine.

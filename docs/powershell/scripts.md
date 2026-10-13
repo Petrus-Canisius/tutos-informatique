@@ -1,4 +1,14 @@
+---
+description: "Lister et exporter des informations système avec PowerShell."
+tags: ["PowerShell", "scripts"]
+---
+
 # Premiers scripts PowerShell
+
+<div class="kb-doc-meta"><span>PowerShell</span><span>Initiation</span><span>Exemple technique</span></div>
+
+<div class="kb-doc-intro"><strong>Objectif.</strong> Lister et exporter des informations système avec PowerShell.</div>
+
 
 ## Objectif
 Créer des sorties utiles pour le diagnostic.

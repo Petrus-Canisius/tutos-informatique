@@ -1,4 +1,14 @@
+---
+description: "Identifier le niveau auquel une connexion réseau échoue."
+tags: ["Réseaux", "connectivité"]
+---
+
 # Diagnostic réseau sur Windows
+
+<div class="kb-doc-meta"><span>Réseaux</span><span>Initiation</span><span>Exemple technique</span></div>
+
+<div class="kb-doc-intro"><strong>Objectif.</strong> Identifier le niveau auquel une connexion réseau échoue.</div>
+
 
 ## Objectif
 Déterminer si une panne provient de l'interface, de la passerelle, du DNS ou d'un service distant.

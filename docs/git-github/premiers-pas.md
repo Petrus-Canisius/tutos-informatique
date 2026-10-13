@@ -1,4 +1,14 @@
+---
+description: "Comprendre les commandes essentielles d'un dépôt Git."
+tags: ["Git et GitHub", "versionnement"]
+---
+
 # Premiers pas avec Git
+
+<div class="kb-doc-meta"><span>Git et GitHub</span><span>Initiation</span><span>Exemple technique</span></div>
+
+<div class="kb-doc-intro"><strong>Objectif.</strong> Comprendre les commandes essentielles d'un dépôt Git.</div>
+
 
 ## Vérifier l'installation
 ```powershell

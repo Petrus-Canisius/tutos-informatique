@@ -1,4 +1,14 @@
+---
+description: "Relever les informations et événements d'un poste sans modifier sa configuration."
+tags: ["Windows", "diagnostic"]
+---
+
 # Maintenance Windows
+
+<div class="kb-doc-meta"><span>Windows</span><span>Initiation</span><span>Exemple technique</span></div>
+
+<div class="kb-doc-intro"><strong>Objectif.</strong> Relever les informations et événements d'un poste sans modifier sa configuration.</div>
+
 
 ## Objectif
 Diagnostiquer un poste Windows sans modifier sa configuration.
