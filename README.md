@@ -12,6 +12,8 @@ Les procédures sont dans `docs/`. La navigation et l'identité générale sont 
 
 Le design est dans `docs/stylesheets/extra.css`. La recherche d'accueil utilise `docs/javascripts/site.js`. Le favicon est dans `docs/images/favicon.svg`.
 
+Le bandeau « Dernière procédure publiée » figure en haut de l'accueil. À chaque déploiement, `tools/latest_procedure.py` parcourt les procédures Markdown présentes dans la navigation `zensical.toml`, identifie la plus récemment ajoutée grâce à l'historique Git, puis génère `docs/data/latest-procedure.json`. `docs/javascripts/latest-procedure.js` actualise automatiquement le titre, la description, la date et le lien. Les pages d'index, le mémoire, le modèle et les pages de gestion du site sont exclus. Le tutoriel FOG sert de repli statique si le catalogue est temporairement indisponible.
+
 ## Ajouter une procédure
 
 1. Créer un fichier Markdown dans la catégorie concernée.

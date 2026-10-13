@@ -8,7 +8,7 @@ repo_name = "Petrus-Canisius / Documentation"
 edit_uri = "edit/main/docs/"
 copyright = "Documentation technique - Petrus-Canisius"
 extra_css = ["stylesheets/extra.css", "stylesheets/memoire.css", "stylesheets/fog.css"]
-extra_javascript = ["javascripts/site.js", "javascripts/memoire.js"]
+extra_javascript = ["javascripts/site.js", "javascripts/memoire.js", "javascripts/latest-procedure.js"]
 nav = [
   { "Accueil" = "index.md" },
   { "Déploiement et gestion de parc" = ["deploiement/index.md", { "FOG Project" = "deploiement/fog-installation.md" }] },

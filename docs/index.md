@@ -8,6 +8,20 @@ hide:
 ---
 
 <div class="kb-home">
+  <section class="kb-latest-banner" data-latest-procedure aria-labelledby="kb-latest-heading">
+    <div class="kb-latest-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path><path d="M10 21h4"></path>
+      </svg>
+    </div>
+    <div class="kb-latest-content">
+      <p class="kb-latest-overline" id="kb-latest-heading">DERNIÈRE PROCÉDURE PUBLIÉE</p>
+      <h2 data-latest-title>Installer et exploiter FOG Project</h2>
+      <p class="kb-latest-description" data-latest-description>Installation sur Linux, configuration PXE, capture et déploiement d'images Windows.</p>
+      <p class="kb-latest-publication">Publiée le <time datetime="2026-10-13" data-latest-date>13 octobre 2026</time></p>
+    </div>
+    <a class="kb-latest-link" href="deploiement/fog-installation/" data-latest-link>Voir le tutoriel <span aria-hidden="true">→</span></a>
+  </section>
   <section class="kb-hero">
     <div class="kb-hero-text">
       <div class="kb-overline kb-overline--light"><span class="kb-dot"></span> IT KNOWLEDGE BASE <span class="kb-slash">/</span> DOCUMENTATION TECHNIQUE</div>
