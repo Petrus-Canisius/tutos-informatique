@@ -5,6 +5,7 @@ niveau: Intermédiaire
 systeme: Windows
 versions: Windows Server et clients de domaine (selon installation)
 validation: non_teste
+type: Fiche de diagnostic
 ---
 
 # Diagnostiquer une GPO qui ne s'applique pas

@@ -5,6 +5,7 @@ niveau: Intermédiaire
 systeme: Linux
 versions: À adapter à la version Proxmox VE installée
 validation: non_teste
+type: Liste de contrôle
 ---
 
 # Contrôles préalables à une intervention sur Proxmox VE

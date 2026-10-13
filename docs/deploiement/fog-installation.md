@@ -8,6 +8,8 @@ tags:
   - Windows 11
   - Linux
 validation: non_teste
+type: Tutoriel
+niveau: Intermédiaire
 versions: 'FOG 1.5 / 1.6 : vérifier selon installation'
 ---
 

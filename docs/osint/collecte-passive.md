@@ -5,6 +5,7 @@ niveau: Initiation
 systeme: Multiplateforme
 versions: Services tiers et bases publiques ; conditions à vérifier
 validation: non_teste
+type: Guide méthodologique
 ---
 
 # Réaliser une collecte OSINT passive
