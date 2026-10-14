@@ -33,7 +33,7 @@ hide:
         <input id="kb-search-input" type="search" placeholder="Rechercher une procédure…" autocomplete="off"/>
         <button type="submit" aria-label="Lancer la recherche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </form>
-      <div class="kb-quick"><span>Accès rapide</span><a href="#categories">Catégories</a><a href="memoire/">Mémoire</a><a href="nouveautes/">Nouveautés</a></div>
+      <div class="kb-quick"><span>Accès rapide</span><a href="#categories">Catégories</a><a href="memoire/">Mémoire</a></div>
     </div>
     <div class="kb-hero-visual" aria-hidden="true">
       <div class="kb-terminal">

@@ -23,7 +23,6 @@ nav = [
     { "Git et GitHub" = "git-github/index.md" },
   ] },
   { "Mémoire de fin d’études" = "memoire/index.md" },
-  { "Nouveautés" = "nouveautes.md" },
 ]
 
 [project.theme]
