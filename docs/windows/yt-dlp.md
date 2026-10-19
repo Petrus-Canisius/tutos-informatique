@@ -114,7 +114,7 @@ Deno **2.3 ou plus récent** est recommandé par la documentation yt-dlp actuell
 yt-dlp --version
 ffmpeg -version
 deno --version
-yt-dlp --verbose --version
+yt-dlp --verbose --simulate "URL_DE_LA_VIDEO"
 ~~~
 
 La dernière commande affiche des informations de diagnostic, notamment les composants détectés. En cas d'échec, consultez le [dépannage](#depannage).
@@ -306,7 +306,7 @@ yt-dlp "URL_DE_LA_VIDEO"
 La configuration utilisateur est généralement lue depuis <code>%APPDATA%\yt-dlp\config</code>. Pour identifier les fichiers réellement chargés :
 
 ~~~powershell
-yt-dlp --verbose --version
+yt-dlp --verbose --simulate "URL_DE_LA_VIDEO"
 ~~~
 
 Pour désactiver temporairement les paramètres enregistrés :
