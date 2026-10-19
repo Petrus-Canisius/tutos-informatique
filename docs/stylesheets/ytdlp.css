@@ -58,3 +58,20 @@
   .dl-hero-terminal{font-size:.55rem}
 }
 @media(prefers-reduced-motion:reduce){.dl-hero *{transition:none!important}}
+
+/* Carte de procédure dans le catalogue Windows. */
+.dl-index-card{
+  border:1px solid var(--kb-edge,#dce6f0);
+  border-radius:13px;
+  padding:1.2rem 1.35rem;
+  margin:.9rem 0 1.55rem;
+  background:var(--kb-panel,#fff);
+  box-shadow:0 8px 24px #1e41660a;
+  border-left:4px solid #3386bf;
+}
+.dl-index-eyebrow{display:block;margin-bottom:.5rem;color:#3282b9;letter-spacing:.1em;font-size:.6rem;font-weight:800}
+.md-typeset .dl-index-card h2{margin:.35rem 0;font-size:1.12rem;letter-spacing:-.02em}
+.md-typeset .dl-index-card p{margin:.4rem 0 .8rem;color:var(--kb-muted,#64758b);line-height:1.65;font-size:.75rem}
+.dl-index-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.7rem 0}
+.dl-index-tags span{font-size:.62rem;padding:.23rem .52rem;color:var(--kb-ink,#1b3049);background:var(--kb-soft,#f4f8fc);border:1px solid var(--kb-edge,#dce6f0);border-radius:20px}
+.md-typeset .dl-index-card .dl-index-link{display:inline-flex;margin-top:.3rem;font-size:.72rem;font-weight:750;text-decoration:none;color:#277dbc}
