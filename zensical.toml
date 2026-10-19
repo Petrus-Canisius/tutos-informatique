@@ -7,13 +7,13 @@ repo_url = "https://github.com/Petrus-Canisius/tutos-informatique"
 repo_name = "Petrus-Canisius / Documentation"
 edit_uri = "edit/main/docs/"
 copyright = "Documentation technique - Petrus-Canisius"
-extra_css = ["stylesheets/extra.css", "stylesheets/memoire.css", "stylesheets/fog.css", "stylesheets/latest-banner-v2.css", "stylesheets/categories-v1.css"]
+extra_css = ["stylesheets/extra.css", "stylesheets/memoire.css", "stylesheets/fog.css", "stylesheets/latest-banner-v2.css", "stylesheets/categories-v1.css", "stylesheets/ytdlp.css"]
 extra_javascript = ["javascripts/site.js", "javascripts/memoire.js", "javascripts/latest-procedure.js"]
 nav = [
   { "Accueil" = "index.md" },
   { "Catégories" = [
     { "Déploiement et gestion de parc" = ["deploiement/index.md", { "FOG Project" = "deploiement/fog-installation.md" }] },
-    { "Windows" = "windows/index.md" },
+    { "Windows" = ["windows/index.md", { "yt-dlp : téléchargement multimédia" = "windows/yt-dlp.md" }] },
     { "Windows Server" = "windows-server/index.md" },
     { "Linux" = "linux/index.md" },
     { "Réseaux" = "reseaux/index.md" },
