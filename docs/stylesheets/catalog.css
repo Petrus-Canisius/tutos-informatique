@@ -30,3 +30,17 @@
 .kb-home .kb-section-title p,.kb-home .kb-section-count{font-size:.8rem}
 @media(max-width:760px){.kb-procedures-grid,.kb-category-guides{grid-template-columns:1fr}.kb-procedure-status dl{grid-template-columns:1fr 1fr}}
 @media(max-width:460px){.kb-procedure-status dl{grid-template-columns:1fr}.kb-guide-validation{max-width:100%}}
+
+/* Ajustements de contraste et de lisibilité avec la spécificité du thème. */
+.md-typeset .kb-home .kb-cat-title{font-size:.89rem;line-height:1.4}
+.md-typeset .kb-home .kb-cat-description{font-size:.79rem;line-height:1.6}
+.md-typeset .kb-home .kb-cat-status{font-size:.72rem}
+.md-typeset .kb-home .kb-cat-eyebrow{color:#165f85;font-size:.7rem}
+.md-typeset .kb-home .kb-latest-overline{font-size:.72rem;color:#17618e}
+.md-typeset .kb-home .kb-latest-description{font-size:.8rem}
+.md-typeset .kb-home .kb-latest-publication{font-size:.74rem}
+.md-typeset .kb-home .kb-latest-link{font-size:.76rem}
+.md-typeset .kb-home .kb-section-title h2{font-size:clamp(1.15rem,2.2vw,1.5rem)}
+.md-typeset .kb-home .kb-section-title p{font-size:.84rem}
+.md-typeset .kb-home .kb-overline{font-size:.72rem}
+@media(max-width:620px){.md-typeset .kb-home .kb-latest-link{width:100%;margin-left:0}}
