@@ -68,6 +68,8 @@ hide:
 
 ## À propos de cette version
 
+Cette édition sous forme d’images ne permet pas de rechercher directement du texte dans le mémoire et ne constitue pas une transcription accessible aux lecteurs d'écran. Aucune transcription intégrale n'est publiée sans accès au document source.
+
 Le mémoire date de 2021. Les technologies, recommandations et références présentées reflètent le contexte de cette période et ne constituent pas nécessairement les bonnes pratiques les plus récentes.
 
 La navigation fonctionne au clavier avec les flèches lorsque la liseuse est sélectionnée. Le zoom et le mode plein écran permettent de lire les schémas.

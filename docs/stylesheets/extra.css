@@ -99,18 +99,7 @@
 /* Mise en avant de l'unique procédure actuellement publiée. */
 .kb-grid--single{grid-template-columns:minmax(0,365px)}
 
-
-/* Bandeau automatique de la dernière procédure publiée. */
-.kb-latest-banner{display:flex;align-items:center;gap:1rem;margin:0 0 1.15rem;padding:1rem 1.15rem;background:var(--kb-panel);border:1px solid #b7d8f3;border-left:4px solid #3189c5;border-radius:11px;box-shadow:0 5px 20px #1b42630b;color:var(--kb-ink)}
-.kb-latest-icon{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;align-self:flex-start;background:#e9f5fd;color:#277cb9;border-radius:9px}
-.kb-latest-icon svg{width:22px;height:22px}
-.kb-latest-content{flex:1;min-width:0}
-.md-typeset .kb-home .kb-latest-overline{color:#2779b4;font-size:.59rem;letter-spacing:.11em;font-weight:800;line-height:1.4;margin:0 0 .3rem}
-.md-typeset .kb-home .kb-latest-content h2{font-size:.9rem;font-weight:750;letter-spacing:-.02em;color:var(--kb-ink);line-height:1.35;margin:0 0 .25rem}
-.md-typeset .kb-home .kb-latest-description{font-size:.68rem;line-height:1.55;color:var(--kb-muted);margin:0}
-.md-typeset .kb-home .kb-latest-publication{font-size:.59rem;line-height:1.4;margin:.35rem 0 0;color:var(--kb-muted)}
-.md-typeset .kb-home a.kb-latest-link{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.6rem .8rem;background:#163e65;color:#fff;font-size:.65rem;line-height:1.35;font-weight:750;white-space:nowrap;border-radius:7px;text-decoration:none;transition:background .16s ease}
-.md-typeset .kb-home a.kb-latest-link:hover{background:#266293;color:#fff}
-.md-typeset .kb-home a.kb-latest-link:focus-visible{outline:3px solid #54c1ee;outline-offset:3px}
-@media(max-width:620px){.kb-latest-banner{align-items:flex-start;flex-wrap:wrap;padding:.9rem;gap:.65rem}.kb-latest-content{flex:1 1 calc(100% - 60px)}.md-typeset .kb-home a.kb-latest-link{margin-left:calc(42px + .65rem)}}
-@media(prefers-reduced-motion:reduce){.md-typeset .kb-home a.kb-latest-link{transition:none}}
+/* Harmonisation de la taille des textes et des liens. */
+.md-typeset .kb-hero p{font-size:clamp(.87rem,1.25vw,1rem)}
+.kb-quick{font-size:.75rem}
+.kb-home a:focus-visible,.kb-home button:focus-visible{outline:3px solid #54c1ee;outline-offset:3px}
