@@ -1,46 +1,64 @@
-name: Publier la documentation
+name: Vérifier et publier la documentation
 
 on:
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: github-pages
+  group: documentation-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Récupérer les fichiers
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Préparer GitHub Pages
-        uses: actions/configure-pages@v5
       - name: Installer Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Installer Zensical
         run: python -m pip install -r requirements.txt
-      - name: Actualiser la dernière procédure publiée
-        run: python tools/latest_procedure.py
+      - name: Tester les métadonnées et le générateur
+        run: |
+          python -m unittest discover -s tests -v
+          python tools/build_catalog.py --validate
+      - name: Produire le catalogue et la navigation
+        run: python tools/build_catalog.py
+      - name: Contrôler la syntaxe JavaScript
+        run: |
+          for file in docs/javascripts/*.js; do node --check "$file"; done
       - name: Générer la documentation
         run: zensical build --clean
+      - name: Contrôler le site généré
+        run: python tools/check_site.py site
+      - name: Préparer GitHub Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
       - name: Préparer l'archive du site
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Publier le site
         id: deployment
         uses: actions/deploy-pages@v4
