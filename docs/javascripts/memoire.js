@@ -6,7 +6,7 @@
     if (!root || root.dataset.mbrReady === "1") return;
     root.dataset.mbrReady = "1";
 
-    var total = 47, page = 1, zoom = 1;
+    var total = Number(root.dataset.total) || 47, page = 1, zoom = 1;
     var image = root.querySelector('[data-mbr="image"]');
     var input = root.querySelector('[data-mbr="input"]');
     var stage = root.querySelector('[data-mbr="stage"]');
@@ -42,10 +42,13 @@
       next.disabled = n === total;
       progress.style.width = (n / total * 100) + "%";
       bar.setAttribute("aria-valuenow", String(n));
+      var currentChapter = chapters.filter(function (btn) {
+        return Number(btn.dataset.mbrPage) <= n;
+      }).slice(-1)[0];
       chapters.forEach(function (btn) {
         var active = Number(btn.dataset.mbrPage) <= n;
         btn.classList.toggle("mbr-chapter-passed", active);
-        if (Number(btn.dataset.mbrPage) === n) btn.setAttribute("aria-current", "page");
+        if (btn === currentChapter) btn.setAttribute("aria-current", "page");
         else btn.removeAttribute("aria-current");
       });
       err.hidden = true;
@@ -81,9 +84,6 @@
       if (e.key === "Home") { e.preventDefault(); draw(1); }
       if (e.key === "End") { e.preventDefault(); draw(total); }
     });
-    stage.addEventListener("contextmenu", function (e) { e.preventDefault(); });
-    stage.addEventListener("dragstart", function (e) { e.preventDefault(); });
-    stage.addEventListener("copy", function (e) { e.preventDefault(); });
     var swipeX = null;
     stage.addEventListener("touchstart", function (e) {
       if (zoom !== 1 || !e.touches.length) return;

@@ -9,8 +9,8 @@ description: Routage, VLAN, dépannage réseau et connectivité.
 
 ## Procédures disponibles
 
-*Aucune procédure publiée pour le moment.*
-
-Les futurs tutoriels de ce domaine seront regroupés ici, à mesure de leur publication.
+<!-- AUTO:CATEGORY_GUIDES:BEGIN -->
+<!-- Généré par tools/build_catalog.py -->
+<!-- AUTO:CATEGORY_GUIDES:END -->
 
 [Retour aux catégories](../index.md#categories)

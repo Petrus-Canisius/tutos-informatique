@@ -9,14 +9,8 @@ description: Procédures Windows 11, maintenance, configuration et outils en lig
 
 ## Procédures disponibles
 
-<div class="dl-index-card">
-  <div>
-    <span class="dl-index-eyebrow">WINDOWS 11 · POWERSHELL · MULTIMÉDIA</span>
-    <h2><a href="yt-dlp/">Installer et utiliser yt-dlp sur Windows 11</a></h2>
-    <p>Installation de yt-dlp, FFmpeg et Deno avec WinGet, téléchargement des meilleures qualités vidéo, extraction audio MP3, formats MP4, sous-titres français, playlists et dépannage.</p>
-    <div class="dl-index-tags"><span>yt-dlp</span><span>FFmpeg</span><span>Deno</span><span>WinGet</span></div>
-    <a class="dl-index-link" href="yt-dlp/">Consulter la procédure →</a>
-  </div>
-</div>
+<!-- AUTO:CATEGORY_GUIDES:BEGIN -->
+<!-- Généré par tools/build_catalog.py -->
+<!-- AUTO:CATEGORY_GUIDES:END -->
 
 [Retour aux catégories](../index.md#categories)

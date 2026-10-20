@@ -1,65 +1,85 @@
 ---
 title: Modèle de procédure
-description: Gabarit réutilisable pour les tutoriels informatiques.
+description: Gabarit réutilisable de tutoriel technique, avec statut de validation.
 ---
 
 # Modèle de procédure — à dupliquer
 
-<div class="kb-doc-meta"><span>Documentation</span><span>Modèle</span><span>À adapter</span></div>
+Ce modèle n'est pas un tutoriel publié. Supprimer toutes les indications d'exemple qui ne correspondent pas à la procédure réelle.
+
+## Métadonnées obligatoires
+
+Début du futur document Markdown :
+
+~~~yaml
+---
+title: "Titre de la procédure"
+description: "Objectif du tutoriel, sans promesse non vérifiée"
+category: "linux"
+level: "Intermédiaire"
+tags:
+  - Linux
+published_at: "AAAA-MM-JJ"
+last_verified: null
+validation: documentation_only
+---
+~~~
+
+**Catégories admises :** deploiement, windows, windows-server, linux, reseaux, virtualisation, powershell, securite, git-github.
+
+**Statuts :** documentation_only, partially_tested, lab_tested, review_required. Ne déclarer des tests qu'après leur réalisation effective.
 
 ## Objectif
 
-Décrire le problème traité et le résultat attendu.
+Décrire le problème traité et le résultat technique attendu.
 
-## Informations générales
+## Environnement
 
 | Élément | Valeur |
 | --- | --- |
-| Produit / version | À compléter |
-| Environnement | À compléter |
-| Niveau | Initiation / Intermédiaire / Avancé |
-| Droits nécessaires | À compléter |
-| Dernière vérification | À compléter |
+| Produit et version | À renseigner |
+| Système | À renseigner |
+| Niveau | À renseigner |
+| Droits nécessaires | À renseigner |
+| Environnement d'essai | À renseigner |
 
 ## Prérequis et risques
 
-- Vérifier les droits nécessaires.
-- Préparer la sauvegarde ou le retour arrière si nécessaire.
+- Préparer une sauvegarde si nécessaire.
+- Vérifier les autorisations et les impacts potentiels.
 
 !!! warning "Précautions"
-    Expliquer les risques liés à l'intervention.
+    Décrire les risques et les précautions spécifiques.
 
 ## Étape 1 — Vérification initiale
 
-Décrire un premier contrôle.
+Décrire les contrôles préalables, la commande, et son résultat attendu.
 
-```powershell
+~~~powershell
 Get-Date
-```
-
-**Résultat attendu :** affichage de la date et de l'heure du poste.
+~~~
 
 ## Étape 2 — Intervention
 
-Décrire les commandes, captures et effets.
+Décrire les commandes et expliquer leur effet, sans sauter les étapes importantes.
 
 ## Étape 3 — Validation
 
-Expliquer les tests qui confirment la réussite.
+Énumérer les tests démontrant le résultat obtenu.
 
-## Problèmes possibles
+## Dépannage
 
-| Symptôme | Cause probable | Vérification |
+| Symptôme | Cause possible | Contrôle |
 | --- | --- | --- |
 | À compléter | À compléter | À compléter |
 
-## Retour arrière
+## Retour arrière (si nécessaire)
 
-Décrire comment restaurer l'état précédent.
+Expliquer le retour à l'état initial.
 
 ## Références
 
-- Documentation officielle.
+Inclure les documentations officielles avec versions et dates de consultation.
 
 ## Historique
 
