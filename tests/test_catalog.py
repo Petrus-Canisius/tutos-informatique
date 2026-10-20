@@ -37,7 +37,7 @@ class CatalogueTests(unittest.TestCase):
         output = nav_config(discover())
         self.assertIn("deploiement/fog-installation.md", output)
         self.assertIn("windows/yt-dlp.md", output)
-        self.assertEqual(output.count("index.md"), len(CATEGORIES) + 1)
+        self.assertEqual(output.count("index.md"), len(CATEGORIES) + 2)
 
     def test_remplacement_idempotent(self):
         original = "<!-- AUTO:GUIDES:BEGIN -->\nancien\n<!-- AUTO:GUIDES:END -->"
