@@ -7,9 +7,18 @@ tags:
   - PXE
   - Windows 11
   - Linux
+category: "deploiement"
+level: "Intermédiaire"
+published_at: "2026-10-13"
+last_verified: null
+validation: documentation_only
 ---
 
 # Installation et exploitation de FOG Project
+
+<!-- AUTO:STATUS:BEGIN -->
+<!-- Généré par tools/build_catalog.py -->
+<!-- AUTO:STATUS:END -->
 
 <div class="fog-hero"><div><span class="fog-eyebrow">GUIDE TECHNIQUE · DÉPLOIEMENT DE PARC</span><p class="fog-hero-title">Du serveur Linux à la restauration d'un poste par le réseau</p><p>Installation de FOG, configuration PXE, inventaire, capture Windows 11 et déploiement sur une machine virtuelle vierge.</p><div class="fog-badges"><span>Linux</span><span>PXE / iPXE</span><span>Windows 11</span><span>FOG 1.5 / 1.6 : vérifier la version</span></div></div><div class="fog-hero-monogram" aria-hidden="true">FOG<small>PROJECT</small></div></div>
 

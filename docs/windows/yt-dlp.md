@@ -7,9 +7,18 @@ tags:
   - yt-dlp
   - FFmpeg
   - Deno
+category: "windows"
+level: "Débutant à intermédiaire"
+published_at: "2026-10-19"
+last_verified: null
+validation: documentation_only
 ---
 
 # Installer et utiliser yt-dlp sur Windows 11
+
+<!-- AUTO:STATUS:BEGIN -->
+<!-- Généré par tools/build_catalog.py -->
+<!-- AUTO:STATUS:END -->
 
 <div class="dl-hero">
   <div class="dl-hero-copy">
