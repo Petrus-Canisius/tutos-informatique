@@ -1,41 +1,89 @@
 # IT Knowledge Base — Documentation informatique
 
-Site public : https://petrus-canisius.github.io/tutos-informatique/
+**Site public :** https://petrus-canisius.github.io/tutos-informatique/
 
-La base de connaissances est publiée avec Zensical, GitHub Pages et GitHub Actions.
+Documentation personnelle sur l'administration, le déploiement, l'automatisation et la sécurité des systèmes d'information. Le projet utilise **Zensical**, Markdown, Python et GitHub Pages.
 
-**Une seule procédure technique est publiée : [Installer et exploiter FOG Project](https://petrus-canisius.github.io/tutos-informatique/deploiement/fog-installation/).** Les anciennes fiches d'exemple ont été retirées du site. Le mémoire et le modèle de rédaction sont conservés.
+## Guides publiés
 
-## Fonctionnement
+- [Installer et exploiter FOG Project](https://petrus-canisius.github.io/tutos-informatique/deploiement/fog-installation/) : capture et déploiement réseau de postes.
+- [Installer et utiliser yt-dlp sur Windows 11](https://petrus-canisius.github.io/tutos-informatique/windows/yt-dlp/) : PowerShell, FFmpeg, Deno, formats et dépannage.
 
-Les procédures sont dans `docs/`. La navigation et l'identité générale sont dans `zensical.toml`. La page d'accueil se trouve dans `docs/index.md`.
+Le [mémoire sur la sécurisation d'Active Directory](https://petrus-canisius.github.io/tutos-informatique/memoire/) reste consultable dans sa liseuse de 47 pages.
 
-Le design est dans `docs/stylesheets/extra.css`. La recherche d'accueil utilise `docs/javascripts/site.js`. Le favicon est dans `docs/images/favicon.svg`.
+**Transparence :** les deux procédures existantes sont documentées, mais leur exécution complète en laboratoire n'a pas été confirmée pour cette publication. Les statuts affichés dans les pages distinguent vérification documentaire et essai pratique.
 
-Le bandeau « Dernière procédure publiée » figure en haut de l'accueil. À chaque déploiement, `tools/latest_procedure.py` parcourt les procédures Markdown présentes dans la navigation `zensical.toml`, identifie la plus récemment ajoutée grâce à l'historique Git, puis génère `docs/data/latest-procedure.json`. `docs/javascripts/latest-procedure.js` actualise automatiquement le titre, la description, la date et le lien. Les pages d'index, le mémoire, le modèle et les pages de gestion du site sont exclus. Le tutoriel FOG sert de repli statique si le catalogue est temporairement indisponible.
+## Architecture
+
+- **docs/** : contenus Markdown, images et ressources.
+- **docs/index.md** : accueil ; les blocs AUTO sont remplis à la compilation.
+- **zensical.toml** : configuration Zensical, navigation automatiquement actualisée.
+- **tools/build_catalog.py** : source unique du catalogue, des compteurs, du bandeau et des index.
+- **docs/data/catalog.json** : données générées à la compilation.
+- **docs/stylesheets/** et **docs/javascripts/** : présentation et interactions.
+- **tests/** : tests du catalogue et des métadonnées.
+- **.github/workflows/docs.yml** : contrôle et déploiement GitHub Pages.
+
+## Installation locale — Windows PowerShell
+
+Prérequis : Git, Python 3.12 et accès à Internet lors de l'installation.
+
+~~~powershell
+git clone https://github.com/Petrus-Canisius/tutos-informatique.git
+cd tutos-informatique
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python tools/build_catalog.py
+zensical serve
+~~~
+
+La commande « serve » affiche l'URL locale dans PowerShell.
 
 ## Ajouter une procédure
 
-1. Créer un fichier Markdown dans la catégorie concernée.
-2. Suivre `docs/modeles/modele-procedure.md`.
-3. Ajouter le tutoriel à la liste `nav` de `zensical.toml` sous sa catégorie et à la liste « Procédures disponibles » de `docs/<categorie>/index.md`.
-4. Enregistrer les modifications sur `main`.
-5. Contrôler le résultat dans GitHub Actions.
+1. Créer un Markdown dans le dossier de catégorie approprié.
+2. Utiliser le modèle [docs/modeles/modele-procedure.md](docs/modeles/modele-procedure.md).
+3. Ajouter les métadonnées obligatoires : titre, description, catégorie, niveau, date de publication et statut de validation.
+4. Exécuter le générateur et les tests.
+5. Créer une branche et ouvrir une pull request.
 
-Les catégories vides sont de simples pages d'attente : elles ne correspondent pas à des procédures publiées. À l'heure actuelle, seule FOG Project est disponible sous « Déploiement et gestion de parc ». Le bandeau de l'accueil identifie les procédures référencées dans la navigation et ne considère pas ces pages d'index comme des tutoriels.
+~~~powershell
+python tools/build_catalog.py
+python -m unittest discover -s tests -v
+zensical build --clean
+python tools/check_site.py site
+~~~
 
-Le guide de contribution interne est conservé dans `docs/contribuer/index.md`, mais n'est pas affiché sur l'accueil ou dans le menu.
+Le générateur actualise les cartes, le nombre de procédures, les index des rubriques et la navigation. Aucune mise à jour manuelle de ces éléments n'est nécessaire lors de l'ajout d'un guide.
 
-## Sécurité
+### Validation
 
-Le dépôt est public. Ne jamais y publier des secrets, clés privées, identifiants, informations personnelles ou captures confidentielles. Les tutoriels d'exemple nécessitent une validation en situation réelle.
+Les valeurs autorisées sont :
 
-## Mémoire de fin d'études
+- **documentation_only** : analyse documentaire, exécution non confirmée.
+- **partially_tested** : essais partiels déclarés.
+- **lab_tested** : procédure entièrement testée dans un laboratoire.
+- **review_required** : vérification à reprendre.
 
-Le mémoire est consultable à l'adresse `/memoire/` au moyen de 47 images WebP filigranées dans `docs/memoire/pages/`. La liseuse se trouve dans `docs/memoire/index.md`, avec les scripts et styles `docs/javascripts/memoire.js` et `docs/stylesheets/memoire.css`.
+Ne jamais attribuer automatiquement un statut « lab_tested ». La date de dernière vérification doit correspondre à un contrôle réellement effectué.
 
-**Le PDF original n'est pas stocké dans ce dépôt.** Les images publiques peuvent toutefois être enregistrées ou capturées : un site statique ne peut garantir l'absence de copies.
+### Génération
 
-## Déploiement et gestion de parc
+Les marqueurs AUTO des Markdown sont remplacés par le script avant chaque compilation. La configuration de la navigation est également reconstruite à partir des pages connues.
 
-La documentation FOG Project se trouve dans `docs/deploiement/fog-installation.md`, avec une page de rubrique et deux schémas SVG originaux. Les sept captures réalisées pour le tutoriel d'origine sont intégrées localement avec l'autorisation déclarée du titulaire des droits. Les fichiers PXE doivent être adaptés à la version FOG réellement utilisée.
+Les fichiers de rubrique « index », le mémoire et les modèles sont exclus du catalogue des procédures.
+
+## Publication
+
+Les pull requests exécutent les tests et la compilation sans déployer sur GitHub Pages. Une fois les modifications intégrées dans la branche main, le workflow publie le site uniquement si les validations sont réussies.
+
+## Sécurité, licences et attribution
+
+Ce dépôt public ne doit contenir ni mots de passe, ni clés privées, ni jetons ou captures confidentielles.
+
+Le guide FOG contient des captures provenant d'un tutoriel tiers, publiées avec l'autorisation déclarée du titulaire des droits et les références correspondantes.
+
+Le mémoire est diffusé sous forme d'images WebP filigranées ; le PDF source n'est pas publié. Les images restent techniquement récupérables. Elles ne fournissent pas une lecture textuelle accessible.
+
+**Les droits des textes, du code, des captures tierces et du mémoire doivent être distingués avant d'adopter une licence globale.**
