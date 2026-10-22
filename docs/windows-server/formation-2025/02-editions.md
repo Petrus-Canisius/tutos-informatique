@@ -132,4 +132,4 @@ Comparer dans un tableau trois fonctionnalités : niveaux fonctionnels AD 2025, 
 - [Pages 32K pour Active Directory](https://learn.microsoft.com/fr-fr/windows-server/identity/ad-ds/32k-pages-optional-feature)
 - [Hotpatch et conditions d'éligibilité](https://learn.microsoft.com/en-us/windows-server/get-started/hotpatch)
 
-[← Module 01](01-fondamentaux/) · [Module 03 : conception →](03-architecture/)
+[← Module 01](01-fondamentaux.md) · [Module 03 : conception →](03-architecture.md)
