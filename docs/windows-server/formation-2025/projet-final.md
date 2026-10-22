@@ -98,4 +98,4 @@ Aucune note globale ne compense une exposition non maîtrisée de secrets ou de 
 7. Preuves de tests et retours arrière.
 8. Journal des risques résiduels et décisions en attente.
 
-[Retour au programme](index.md) · [Catalogue d'exercices](travaux-pratiques/)
+[Retour au programme](index.md) · [Catalogue d'exercices](travaux-pratiques.md)
