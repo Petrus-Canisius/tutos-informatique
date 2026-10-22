@@ -11,6 +11,16 @@ description: Procédures Windows 11, maintenance, configuration et outils en lig
 
 <div class="dl-index-card">
   <div>
+    <span class="dl-index-eyebrow">WINDOWS 11 · INSTALLATION · HYPER-V</span>
+    <h2><a href="installation-compte-local/">Installer Windows 11 sans compte Microsoft</a></h2>
+    <p>Créer un compte local lors de la configuration initiale de Windows 11, avec les méthodes disponibles, leurs limites et les contrôles après installation.</p>
+    <div class="dl-index-tags"><span>Windows 11</span><span>Compte local</span><span>OOBE</span><span>Hyper-V</span></div>
+    <a class="dl-index-link" href="installation-compte-local/">Consulter la procédure →</a>
+  </div>
+</div>
+
+<div class="dl-index-card">
+  <div>
     <span class="dl-index-eyebrow">WINDOWS 11 · POWERSHELL · MULTIMÉDIA</span>
     <h2><a href="yt-dlp/">Installer et utiliser yt-dlp sur Windows 11</a></h2>
     <p>Installation de yt-dlp, FFmpeg et Deno avec WinGet, téléchargement des meilleures qualités vidéo, extraction audio MP3, formats MP4, sous-titres français, playlists et dépannage.</p>
