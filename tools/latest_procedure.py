@@ -25,7 +25,7 @@ def is_procedure(path):
     return (path.endswith(".md")
             and Path(path).name != "index.md"
             and path != "nouveautes.md"
-            and not path.startswith(("modeles/", "contribuer/", "memoire/")))
+            and not path.startswith(("modeles/", "contribuer/", "memoire/", "windows-server/formation-2025/")))
 
 def metadata(text):
     if not text.startswith("---\n"):
