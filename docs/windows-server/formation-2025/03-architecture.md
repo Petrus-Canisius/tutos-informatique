@@ -151,4 +151,4 @@ Deux DC virtuels exécutés sur le même hôte perdent l'accès au stockage part
 - [Planification du déploiement AD DS](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/)
 - [Présentation d'Hyper-V](https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/overview)
 
-[← Module 02](02-editions/) · [Module 04 : installation →](04-installation/)
+[← Module 02](02-editions.md) · [Module 04 : installation →](04-installation.md)
