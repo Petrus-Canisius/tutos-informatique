@@ -12,7 +12,7 @@ description: Installer Server Core ou Desktop Experience dans Hyper-V, configure
 
 ## 1. Préparatifs avant installation
 
-Le [laboratoire Hyper-V](laboratoire/) doit être prêt : commutateur privé LAB-WS2025, VM Génération 2 nommée DC01, 2 vCPU, 4 Go de RAM de départ et disque virtuel neuf. Ces caractéristiques sont des exemples pédagogiques, pas des minima garantis pour tout usage.
+Le [laboratoire Hyper-V](laboratoire.md) doit être prêt : commutateur privé LAB-WS2025, VM Génération 2 nommée DC01, 2 vCPU, 4 Go de RAM de départ et disque virtuel neuf. Ces caractéristiques sont des exemples pédagogiques, pas des minima garantis pour tout usage.
 
 Préparer une image ISO **officielle**, vérifier son origine, sa version, la licence et le bon fonctionnement du support. Ne pas utiliser d'image modifiée ou téléchargée depuis un distributeur non identifié.
 
@@ -179,4 +179,4 @@ Même procédure sur une VM **TEST-GUI** distincte. Comparer les outils locaux, 
 - [Exigences matérielles](https://learn.microsoft.com/fr-fr/windows-server/get-started/hardware-requirements)
 - [Administration et rôles](https://learn.microsoft.com/en-us/windows-server/administration/)
 
-[← Module 03](03-architecture/) · [Retour au programme](index.md)
+[← Module 03](03-architecture.md) · [Retour au programme](index.md)
