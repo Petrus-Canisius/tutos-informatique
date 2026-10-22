@@ -5,7 +5,7 @@ description: Liste progressive de 52 scénarios pratiques répartis sur les 26 m
 
 # Catalogue des 52 travaux pratiques
 
-Cette page présente **le référentiel d'exercices du cursus**, distinct des fiches réellement rédigées. Les exercices des modules [01](01-fondamentaux/), [02](02-editions/), [03](03-architecture/) et [04](04-installation/) sont décrits et corrigés dans leurs chapitres. Les autres thèmes constituent un **plan de production**, pas des procédures exécutables ni des corrigés déjà fournis.
+Cette page présente **le référentiel d'exercices du cursus**, distinct des fiches réellement rédigées. Les exercices des modules [01](01-fondamentaux.md), [02](02-editions.md), [03](03-architecture.md) et [04](04-installation.md) sont décrits et corrigés dans leurs chapitres. Les autres thèmes constituent un **plan de production**, pas des procédures exécutables ni des corrigés déjà fournis.
 
 !!! warning "Portée et sécurité"
     Tous les scénarios de pannes, de suppression, de restauration, d'administration privilégiée et de changement réseau sont prévus sur un laboratoire autorisé, isolé du réseau réel. Aucune expérience ne doit être directement transposée en production.
@@ -41,7 +41,7 @@ Cette page présente **le référentiel d'exercices du cursus**, distinct des fi
 | **25** · Automatisation | 25-A · Provisionner des objets avec contrôle | 25-B · Construire une validation idempotente |
 | **26** · Conteneurs | 26-A · Comparer VM et conteneur Windows | 26-B · Déployer une charge de test compatible |
 
-Le module 04 possède aussi un [troisième exercice sur l'échec DNS avant installation AD](04-installation/#tp-04-c-panne-de-dns-volontaire). Le laboratoire contient [L-01, exercice préalable d'isolement](laboratoire/#travail-pratique-l-01-isolement-du-reseau).
+Le module 04 possède aussi un [troisième exercice sur l'échec DNS avant installation AD](04-installation.md#tp-04-c-panne-de-dns-volontaire). Le laboratoire contient [L-01, exercice préalable d'isolement](laboratoire.md#travail-pratique-l-01-isolement-du-reseau).
 
 ## Format imposé pour chaque futur TP
 
@@ -68,4 +68,4 @@ Le module 04 possède aussi un [troisième exercice sur l'échec DNS avant insta
 
 **Seuil indicatif de validation : 80/100**, à compléter par la réussite obligatoire des points de sécurité. Une manipulation qui modifie involontairement le réseau réel ou expose des identifiants est un échec critique, quel que soit le score.
 
-[Retour au parcours](index.md) · [Projet final](projet-final/)
+[Retour au parcours](index.md) · [Projet final](projet-final.md)
