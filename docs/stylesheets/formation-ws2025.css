@@ -1,0 +1,21 @@
+/* Parcours Windows Server 2025 : styles confinés aux composants pédagogiques. */
+.ws25-hero{padding:1.7rem 1.85rem;margin:1rem 0 1.6rem;border-radius:17px;background:linear-gradient(125deg,#10243e,#183f68);color:#f3f8ff;box-shadow:0 10px 30px #0c25451b}
+.ws25-kicker{display:block;color:#9acced;font-size:.62rem;font-weight:800;letter-spacing:.14em;margin-bottom:.55rem}
+.md-typeset .ws25-hero h2{color:#fff;font-size:1.55rem;margin:0 0 .5rem;font-weight:800;line-height:1.2}
+.ws25-hero p{font-size:.75rem;line-height:1.65;margin:0 0 1.15rem;max-width:45rem;color:#d2e3f5}
+.ws25-pills,.ws25-meta{display:flex;gap:.43rem;flex-wrap:wrap}
+.ws25-pills span{font-size:.6rem;font-weight:650;border:1px solid #66809f;background:#ffffff15;padding:.31rem .63rem;border-radius:30px}
+.ws25-meta{margin:0 0 1.2rem}
+.ws25-meta span{font-size:.61rem;color:var(--kb-muted,#62758b);border:1px solid var(--kb-edge,#d7e4ef);background:var(--kb-soft,#f4f8fc);padding:.33rem .67rem;border-radius:40px}
+.ws25-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin:1rem 0 1.5rem}
+.md-typeset .ws25-steps a{display:flex;flex-direction:column;gap:.3rem;padding:1rem 1.15rem;border:1px solid var(--kb-edge,#dce6f0);border-radius:13px;background:var(--kb-panel,#fff);text-decoration:none;color:var(--kb-ink,#23384e);transition:border-color .2s,transform .2s}
+.md-typeset .ws25-steps a:hover{border-color:#469ad8;transform:translateY(-2px)}
+.ws25-steps strong{font-weight:770;font-size:.76rem}
+.ws25-steps small{color:var(--kb-muted,#62758b);font-size:.64rem;line-height:1.55}
+.md-typeset .ws25-home{display:flex;gap:1rem;align-items:center;justify-content:space-between;padding:1.25rem 1.35rem;border:1px solid #8ebfe1;background:linear-gradient(135deg,var(--kb-panel,#fff),var(--kb-soft,#f4f8fc));border-radius:13px}
+.md-typeset .ws25-home h2{font-size:1.18rem;color:var(--kb-ink,#23384e);margin:.2rem 0 .3rem}
+.md-typeset .ws25-home p{font-size:.7rem;color:var(--kb-muted,#62758b);margin:0;line-height:1.55}
+.md-typeset a.ws25-home-link{display:inline-flex;align-items:center;justify-content:center;padding:.7rem 1rem;background:#173f68;color:white;border-radius:9px;text-decoration:none;font-weight:700;font-size:.67rem;white-space:nowrap}
+.md-typeset a.ws25-home-link:hover{background:#28618f;color:#fff}
+@media(max-width:760px){.ws25-steps{grid-template-columns:1fr}.ws25-hero{padding:1.2rem}.md-typeset .ws25-home{flex-direction:column;align-items:start}}
+@media(prefers-reduced-motion:reduce){.md-typeset .ws25-steps a{transition:none}}
