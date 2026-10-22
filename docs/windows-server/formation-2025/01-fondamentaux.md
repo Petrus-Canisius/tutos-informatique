@@ -183,4 +183,4 @@ Deux contrôleurs de domaine peuvent améliorer la résilience de l'authentifica
 
 **Sources :** [Windows Server](https://learn.microsoft.com/fr-fr/windows-server/), [Active Directory Domain Services](https://learn.microsoft.com/fr-fr/windows-server/identity/ad-ds/), [Hyper-V](https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/).
 
-[← Laboratoire](laboratoire/) · [Module 02 : éditions et nouveautés →](02-editions/)
+[← Laboratoire](laboratoire.md) · [Module 02 : éditions et nouveautés →](02-editions.md)
