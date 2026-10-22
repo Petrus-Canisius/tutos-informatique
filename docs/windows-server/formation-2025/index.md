@@ -13,7 +13,7 @@ description: Parcours progressif d'administration et d'ingénierie Windows Serve
 </div>
 
 !!! info "État éditorial"
-    **Les chapitres liés ci-dessous sont rédigés et consultables.** Les autres entrées constituent le programme prévisionnel, **pas des cours déjà publiés**. Les durées désignent le parcours complet à construire, et non le temps de lecture actuellement en ligne. Les exemples n'ont pas été testés sur une infrastructure de production.
+    **Les modules 01 à 12 sont rédigés et consultables.** Les autres entrées constituent le programme prévisionnel, **pas des cours déjà publiés**. Les durées désignent le parcours complet à construire, et non le temps de lecture actuellement en ligne. Les exemples n'ont pas été testés sur une infrastructure de production.
 
 <div class="ws25-steps">
   <a href="laboratoire/"><strong>01 · Préparer le laboratoire</strong><small>Hyper-V, réseau isolé, VM et contrôles de sécurité</small></a>
@@ -34,9 +34,9 @@ description: Parcours progressif d'administration et d'ingénierie Windows Serve
 | Partie | Modules | Parcours prévu |
 | --- | --- | --- |
 | I. Fondations | **[01. Fondamentaux](01-fondamentaux/)** · **[02. Éditions et nouveautés](02-editions/)** · **[03. Architecture](03-architecture/)** · **[04. Installation](04-installation/)** | Comprendre et déployer |
-| II. Administration | 05. Administration distante · 06. PowerShell | Gérer sans dépendre d'une console unique |
-| III. Identités | 07. Architecture AD DS · 08. Déploiement AD DS · 09. Identités privilégiées · 10. Stratégies de groupe | Structurer et protéger l'annuaire |
-| IV. Réseaux | 11. DNS · 12. DHCP/IPAM · 13. Routage, VPN et NPS | Maintenir les services réseau |
+| II. Administration | **[05. Administration distante](05-administration.md)** · **[06. PowerShell](06-powershell.md)** | Gérer sans dépendre d'une console unique |
+| III. Identités | **[07. Architecture AD DS](07-ad-architecture.md)** · **[08. Déploiement AD DS](08-ad-deploiement.md)** · **[09. Identités privilégiées](09-identites.md)** · **[10. Stratégies de groupe](10-gpo.md)** | Structurer et protéger l'annuaire |
+| IV. Réseaux | **[11. DNS](11-dns.md)** · **[12. DHCP/IPAM](12-dhcp.md)** · 13. Routage, VPN et NPS | Maintenir les services réseau |
 | V. Données | 14. Stockage · 15. SMB et DFS · 16. IIS, RDS, AD CS | Distribuer les ressources |
 | VI. Disponibilité | 17. Hyper-V · 18. Clustering | Virtualiser et résister aux pannes |
 | VII. Sécurité | 19. Durcissement · 20. Détection et réponse | Réduire la surface d'attaque |
