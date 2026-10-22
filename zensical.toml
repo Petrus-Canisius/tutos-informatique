@@ -7,14 +7,27 @@ repo_url = "https://github.com/Petrus-Canisius/tutos-informatique"
 repo_name = "Petrus-Canisius / Documentation"
 edit_uri = "edit/main/docs/"
 copyright = "Documentation technique - Petrus-Canisius"
-extra_css = ["stylesheets/extra.css", "stylesheets/memoire.css", "stylesheets/fog.css", "stylesheets/latest-banner-v2.css", "stylesheets/categories-v1.css", "stylesheets/ytdlp.css"]
+extra_css = ["stylesheets/extra.css", "stylesheets/memoire.css", "stylesheets/fog.css", "stylesheets/latest-banner-v2.css", "stylesheets/categories-v1.css", "stylesheets/ytdlp.css", "stylesheets/formation-ws2025.css"]
 extra_javascript = ["javascripts/site.js", "javascripts/memoire.js", "javascripts/latest-procedure.js"]
 nav = [
   { "Accueil" = "index.md" },
   { "Catégories" = [
     { "Déploiement et gestion de parc" = ["deploiement/index.md", { "FOG Project" = "deploiement/fog-installation.md" }] },
     { "Windows" = ["windows/index.md", { "Microsoft Activation Scripts (MAS)" = "windows/microsoft-activation-scripts.md" }, { "Installer Windows 11 sans compte Microsoft" = "windows/installation-compte-local.md" }, { "yt-dlp : téléchargement multimédia" = "windows/yt-dlp.md" }] },
-    { "Windows Server" = "windows-server/index.md" },
+    { "Windows Server" = [
+    "windows-server/index.md",
+    { "Formation Windows Server 2025" = [
+      "windows-server/formation-2025/index.md",
+      { "Préparer le laboratoire Hyper-V" = "windows-server/formation-2025/laboratoire.md" },
+      { "01 · Comprendre les infrastructures" = "windows-server/formation-2025/01-fondamentaux.md" },
+      { "02 · Éditions et nouveautés" = "windows-server/formation-2025/02-editions.md" },
+      { "03 · Concevoir l'architecture" = "windows-server/formation-2025/03-architecture.md" },
+      { "04 · Installer et configurer" = "windows-server/formation-2025/04-installation.md" },
+      { "Travaux pratiques" = "windows-server/formation-2025/travaux-pratiques.md" },
+      { "Projet final" = "windows-server/formation-2025/projet-final.md" },
+      { "Glossaire" = "windows-server/formation-2025/glossaire.md" }
+    ] }
+  ] },
     { "Linux" = "linux/index.md" },
     { "Réseaux" = "reseaux/index.md" },
     { "Virtualisation" = "virtualisation/index.md" },
