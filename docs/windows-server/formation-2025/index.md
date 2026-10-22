@@ -33,7 +33,7 @@ description: Parcours progressif d'administration et d'ingénierie Windows Serve
 
 | Partie | Modules | Parcours prévu |
 | --- | --- | --- |
-| I. Fondations | **[01. Fondamentaux](01-fondamentaux/)** · **[02. Éditions et nouveautés](02-editions/)** · **[03. Architecture](03-architecture/)** · **[04. Installation](04-installation/)** | Comprendre et déployer |
+| I. Fondations | **[01. Fondamentaux](01-fondamentaux.md)** · **[02. Éditions et nouveautés](02-editions.md)** · **[03. Architecture](03-architecture.md)** · **[04. Installation](04-installation.md)** | Comprendre et déployer |
 | II. Administration | **[05. Administration distante](05-administration.md)** · **[06. PowerShell](06-powershell.md)** | Gérer sans dépendre d'une console unique |
 | III. Identités | **[07. Architecture AD DS](07-ad-architecture.md)** · **[08. Déploiement AD DS](08-ad-deploiement.md)** · **[09. Identités privilégiées](09-identites.md)** · **[10. Stratégies de groupe](10-gpo.md)** | Structurer et protéger l'annuaire |
 | IV. Réseaux | **[11. DNS](11-dns.md)** · **[12. DHCP/IPAM](12-dhcp.md)** · 13. Routage, VPN et NPS | Maintenir les services réseau |
@@ -55,10 +55,10 @@ Les modules sont ordonnés par dépendance technique : une compréhension des fl
 
 ## Ressources du parcours
 
-- [Laboratoire Hyper-V et plan d'adressage](laboratoire/)
-- [Catalogue de 52 travaux pratiques et critères de réussite](travaux-pratiques/)
-- [Projet final : une entreprise sur deux sites](projet-final/)
-- [Glossaire de l'administration Windows Server](glossaire/)
+- [Laboratoire Hyper-V et plan d'adressage](laboratoire.md)
+- [Catalogue de 52 travaux pratiques et critères de réussite](travaux-pratiques.md)
+- [Projet final : une entreprise sur deux sites](projet-final.md)
+- [Glossaire de l'administration Windows Server](glossaire.md)
 - [Catégorie Windows Server](../)
 
 !!! warning "Versions et fonctionnalités"
