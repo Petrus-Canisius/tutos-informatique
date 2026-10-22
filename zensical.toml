@@ -13,7 +13,7 @@ nav = [
   { "Accueil" = "index.md" },
   { "Catégories" = [
     { "Déploiement et gestion de parc" = ["deploiement/index.md", { "FOG Project" = "deploiement/fog-installation.md" }] },
-    { "Windows" = ["windows/index.md", { "yt-dlp : téléchargement multimédia" = "windows/yt-dlp.md" }] },
+    { "Windows" = ["windows/index.md", { "Microsoft Activation Scripts (MAS)" = "windows/microsoft-activation-scripts.md" }, { "Installer Windows 11 sans compte Microsoft" = "windows/installation-compte-local.md" }, { "yt-dlp : téléchargement multimédia" = "windows/yt-dlp.md" }] },
     { "Windows Server" = "windows-server/index.md" },
     { "Linux" = "linux/index.md" },
     { "Réseaux" = "reseaux/index.md" },
