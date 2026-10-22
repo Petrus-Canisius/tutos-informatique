@@ -151,4 +151,4 @@ Get-VMNetworkAdapter -All | Where-Object SwitchName -eq "LAB-WS2025"
 - [Créer un commutateur virtuel Hyper-V](https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch)
 - [Installer Windows Server depuis un support](https://learn.microsoft.com/fr-fr/windows-server/get-started/install-windows-server)
 
-[Suite : fondamentaux](01-fondamentaux/)
+[Suite : fondamentaux](01-fondamentaux.md)
