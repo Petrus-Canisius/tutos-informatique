@@ -11,6 +11,16 @@ description: Procédures Windows 11, maintenance, configuration et outils en lig
 
 <div class="dl-index-card">
   <div>
+    <span class="dl-index-eyebrow">WINDOWS · POWERSHELL · SÉCURITÉ</span>
+    <h2><a href="microsoft-activation-scripts/">Comprendre et utiliser Microsoft Activation Scripts (MAS)</a></h2>
+    <p>Explication de la commande irm | iex, contrôle de la provenance du script, méthodes annoncées par MAS et vérification du statut d’activation Windows.</p>
+    <div class="dl-index-tags"><span>PowerShell</span><span>MAS</span><span>Activation</span><span>Sécurité</span></div>
+    <a class="dl-index-link" href="microsoft-activation-scripts/">Consulter la procédure →</a>
+  </div>
+</div>
+
+<div class="dl-index-card">
+  <div>
     <span class="dl-index-eyebrow">WINDOWS 11 · INSTALLATION · HYPER-V</span>
     <h2><a href="installation-compte-local/">Installer Windows 11 sans compte Microsoft</a></h2>
     <p>Créer un compte local lors de la configuration initiale de Windows 11, avec les méthodes disponibles, leurs limites et les contrôles après installation.</p>
