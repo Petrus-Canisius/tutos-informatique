@@ -36,7 +36,7 @@ nav = [
       { "Glossaire" = "windows-server/formation-2025/glossaire.md" }
     ] }
   ] },
-    { "Linux" = "linux/index.md" },
+    { "Linux" = ["linux/index.md", { "Brave : réparer un profil verrouillé" = "linux/brave-profil-verrouille.md" }] },
     { "Réseaux" = "reseaux/index.md" },
     { "Virtualisation" = "virtualisation/index.md" },
     { "PowerShell et automatisation" = "powershell/index.md" },
