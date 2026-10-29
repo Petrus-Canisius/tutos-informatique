@@ -1,5 +1,5 @@
 ---
-title: 17 · Hyper-V : virtualisation professionnelle
+title: "17 · Hyper-V : virtualisation professionnelle"
 description: Architecture, virtual switches, génération 2, VHDX, mémoire, checkpoints, réplication et sécurité des VM.
 ---
 
