@@ -4,7 +4,7 @@ Site public : https://petrus-canisius.github.io/tutos-informatique/
 
 La base de connaissances est publiée avec Zensical, GitHub Pages et GitHub Actions.
 
-**Une seule procédure technique est publiée : [Installer et exploiter FOG Project](https://petrus-canisius.github.io/tutos-informatique/deploiement/fog-installation/).** Les anciennes fiches d'exemple ont été retirées du site. Le mémoire et le modèle de rédaction sont conservés.
+Les procédures sont organisées par catégories, dont [FOG Project](https://petrus-canisius.github.io/tutos-informatique/deploiement/fog-installation/) et [Réparer Brave après un renommage d’Ubuntu](https://petrus-canisius.github.io/tutos-informatique/linux/brave-profil-verrouille/). Le mémoire et le modèle de rédaction sont conservés.
 
 ## Fonctionnement
 
@@ -22,7 +22,7 @@ Le bandeau « Dernière procédure publiée » figure en haut de l'accueil. À c
 4. Enregistrer les modifications sur `main`.
 5. Contrôler le résultat dans GitHub Actions.
 
-Les catégories vides sont de simples pages d'attente : elles ne correspondent pas à des procédures publiées. À l'heure actuelle, seule FOG Project est disponible sous « Déploiement et gestion de parc ». Le bandeau de l'accueil identifie les procédures référencées dans la navigation et ne considère pas ces pages d'index comme des tutoriels.
+Les catégories sans procédure sont des pages d’attente. Le bandeau de l’accueil identifie automatiquement les tutoriels référencés dans la navigation, et exclut les pages d’index.
 
 Le guide de contribution interne est conservé dans `docs/contribuer/index.md`, mais n'est pas affiché sur l'accueil ou dans le menu.
 

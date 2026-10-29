@@ -86,8 +86,8 @@ Avec la version Snap, les fichiers de profil peuvent être situés dans les donn
 Afficher **uniquement les liens symboliques** utilisés comme verrous de profil :
 
 ```bash
-find "$HOME/snap/brave" -maxdepth 8 -type l \\
-  \( -name 'SingletonLock' -o -name 'SingletonCookie' \\
+find "$HOME/snap/brave" -maxdepth 8 -type l \
+  \( -name 'SingletonLock' -o -name 'SingletonCookie' \
      -o -name 'SingletonSocket' \) -print
 ```
 
@@ -98,8 +98,8 @@ Les noms `SingletonLock`, `SingletonCookie` et `SingletonSocket` correspondent a
 **Uniquement après avoir confirmé qu’aucune instance Brave n’est active**, supprimer les liens détectés :
 
 ```bash
-find "$HOME/snap/brave" -maxdepth 8 -type l \\
-  \( -name 'SingletonLock' -o -name 'SingletonCookie' \\
+find "$HOME/snap/brave" -maxdepth 8 -type l \
+  \( -name 'SingletonLock' -o -name 'SingletonCookie' \
      -o -name 'SingletonSocket' \) -print -delete
 ```
 
