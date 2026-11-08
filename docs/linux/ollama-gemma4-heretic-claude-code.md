@@ -1,6 +1,6 @@
 ---
 title: Exécuter Gemma 4 Heretic en local avec Ollama et Claude Code sur Ubuntu
-description: Installer Gemma 4 Heretic Q8 sur un GPU NVIDIA avec Ollama Snap, régler 32K tokens et connecter Claude Code sans API payante.
+description: Installer Gemma 4 Heretic Q8 sur NVIDIA avec Ollama Snap, connecter Claude Code en 64K et diagnostiquer les limites du modèle.
 ---
 
 # Exécuter Gemma 4 Heretic en local sur Ubuntu avec Ollama et Claude Code
@@ -24,7 +24,7 @@ Cette procédure distingue volontairement **Ollama installé avec Snap** de l'in
 | Claude Code | 2.1.317 |
 | Modèle | <code>igorls/gemma-4-12B-it-heretic-GGUF:Q8_0</code> |
 | Taille du modèle | Environ 13 Go |
-| Configuration de contexte testée | 32 768 tokens |
+| Contextes testés | 32 768 tokens (GPU confirmé) et 65 536 tokens (analyse Claude Code) |
 | Vérification pratique | 8 novembre 2026 |
 
 La version **Q4_K_M** du même modèle occupe environ **7,4 Go**. La version **Q8_0**, retenue ici, utilise davantage de mémoire mais préserve plus fidèlement la précision numérique des poids.
@@ -148,11 +148,13 @@ curl http://127.0.0.1:11434/api/chat \
 
 **Résultat attendu :** une réponse JSON avec le contenu généré.
 
-## 4. Définir une fenêtre de contexte de 32 768 tokens
+## 4. Adapter la fenêtre de contexte : passer de 32K à 64K
 
-Claude Code envoie un prompt système et des définitions d'outils parfois volumineux. Un contexte trop court peut tronquer les instructions et détériorer l'appel d'outils.
+Claude Code consomme du contexte pour ses instructions, les définitions d'outils, la conversation et les fichiers lus. Un modèle peut fonctionner correctement en conversation simple mais manquer de place pendant une analyse de code.
 
-Sur une installation **Snap**, utiliser ici un **Modelfile** dédié, sans modifier un hypothétique <code>ollama.service</code> :
+### Première configuration : 32 768 tokens
+
+Cette configuration a bien fonctionné pour **l'inférence sur GPU** :
 
 ~~~bash
 cat > "$HOME/Modelfile.gemma4-heretic" <<'EOF'
@@ -164,24 +166,47 @@ ollama create gemma4-heretic-32k \
   -f "$HOME/Modelfile.gemma4-heretic"
 ~~~
 
-Le message <code>success</code> confirme la création de l'alias local. Les couches déjà présentes sont réutilisées : le modèle de 13 Go n'est pas retéléchargé.
+Cependant, sur le projet Python de test, Claude Code a interrompu une première analyse avec :
 
-Tester ce nouvel alias :
-
-~~~bash
-ollama run gemma4-heretic-32k
+~~~text
+Autocompact is thrashing: the context refilled to the limit
+within 3 turns of the previous compact, 3 times in a row.
+Try reading in smaller chunks, or use /clear to start fresh.
 ~~~
 
-Lorsqu'il est chargé, vérifier la colonne <code>CONTEXT</code> :
+Ce message signale des compressions répétées de l'historique : les sorties d'outils ou les instructions remplissent à nouveau le contexte. **Il ne prouve pas, à lui seul, que la fenêtre de 32K est l'unique cause**.
+
+### Deuxième configuration : 65 536 tokens (64K)
+
+Conserver le profil 32K et créer un nouvel alias réutilisant les mêmes poids :
+
+~~~bash
+cat > "$HOME/Modelfile.gemma4-heretic-64k" <<'EOF'
+FROM igorls/gemma-4-12B-it-heretic-GGUF:Q8_0
+PARAMETER num_ctx 65536
+EOF
+
+ollama create gemma4-heretic-64k \
+  -f "$HOME/Modelfile.gemma4-heretic-64k"
+~~~
+
+Le message <code>success</code> indique que l'alias a été créé, sans retélécharger 13 Go de poids.
+
+Le second test, après <code>/clear</code> et avec des limites explicites de lecture, a pu lancer **une recherche, lire quatre fichiers et produire un rapport** sans nouvelle erreur Autocompact observée. **Il ne s'agit que d'un test court** ; cela ne démontre pas qu'un contexte de 64K supprimera toute saturation dans un projet plus important.
+
+!!! note "Mémoire vidéo"
+    Les relevés <code>100% GPU</code> et <code>14 205 Mio</code> ont été obtenus avec **32K**, pas avec 64K. Le cache de contexte plus long peut accroître sensiblement l'utilisation de VRAM. Il faut contrôler <code>ollama ps</code> et <code>nvidia-smi</code> **pendant une inférence 64K** avant d'affirmer que cette configuration tient intégralement dans la RTX 4090.
+
+Pour voir le contexte effectivement utilisé :
 
 ~~~bash
 ollama ps
 ~~~
 
-Elle doit indiquer **32768**. La documentation d'Ollama recommande plutôt **64K tokens ou davantage** pour les travaux de code complexes. Un contexte plus long augmente toutefois la mémoire requise ; vérifier la VRAM et les performances avant de l'augmenter.
+Le nombre de tokens du contexte demandé doit apparaître dans la colonne <code>CONTEXT</code> **lorsque le modèle est chargé**. Dans Claude Code, <code>/context</code> aide à examiner l'occupation de la fenêtre.
 
 !!! note "Installation Ollama classique, hors Snap"
-    Avec l'installateur natif, <code>OLLAMA_CONTEXT_LENGTH</code> peut se configurer dans le service systemd. Modifier une variable dans un terminal **ne reconfigure pas** un serveur déjà lancé comme service. Le Modelfile ci-dessus permet de fixer le contexte pour ce modèle sans toucher à la configuration globale.
+    Avec l'installateur natif, <code>OLLAMA_CONTEXT_LENGTH</code> peut se configurer dans le service systemd. Modifier une variable dans un terminal ne reconfigure pas un serveur déjà lancé comme service. Le Modelfile ci-dessus fixe le contexte pour un alias précis, sans toucher à la configuration globale.
 
 ## 5. Connecter Claude Code au serveur Ollama local
 
@@ -206,7 +231,7 @@ Si la commande n'est pas immédiatement reconnue, rouvrir le terminal ou vérifi
 Le lanceur suivant existe :
 
 ~~~bash
-ollama launch claude --model gemma4-heretic-32k
+ollama launch claude --model gemma4-heretic-64k
 ~~~
 
 Mais il peut afficher :
@@ -225,15 +250,15 @@ Utiliser alors la **connexion manuelle**, en conservant l'installation existante
 env -u ANTHROPIC_API_KEY \
   ANTHROPIC_BASE_URL=http://127.0.0.1:11434 \
   ANTHROPIC_AUTH_TOKEN=ollama \
-  ANTHROPIC_DEFAULT_OPUS_MODEL=gemma4-heretic-32k \
-  ANTHROPIC_DEFAULT_SONNET_MODEL=gemma4-heretic-32k \
-  ANTHROPIC_DEFAULT_HAIKU_MODEL=gemma4-heretic-32k \
-  CLAUDE_CODE_SUBAGENT_MODEL=gemma4-heretic-32k \
-  CLAUDE_CODE_MAX_CONTEXT_TOKENS=32768 \
+  ANTHROPIC_DEFAULT_OPUS_MODEL=gemma4-heretic-64k \
+  ANTHROPIC_DEFAULT_SONNET_MODEL=gemma4-heretic-64k \
+  ANTHROPIC_DEFAULT_HAIKU_MODEL=gemma4-heretic-64k \
+  CLAUDE_CODE_SUBAGENT_MODEL=gemma4-heretic-64k \
+  CLAUDE_CODE_MAX_CONTEXT_TOKENS=65536 \
   CLAUDE_CODE_MAX_OUTPUT_TOKENS=4096 \
   MAX_THINKING_TOKENS=0 \
   CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 \
-  claude --model gemma4-heretic-32k
+  claude --model gemma4-heretic-64k
 ~~~
 
 **Signification des paramètres essentiels :**
@@ -264,7 +289,7 @@ Dans Claude Code, taper :
 /status
 ~~~
 
-Contrôler que le modèle sélectionné est <code>gemma4-heretic-32k</code> et que la base API est <code>http://127.0.0.1:11434</code>.
+Contrôler que le modèle sélectionné est <code>gemma4-heretic-64k</code> et que la base API est <code>http://127.0.0.1:11434</code>.
 
 Envoyer une requête courte pour déclencher une inférence. Dans un **autre terminal** :
 
@@ -273,42 +298,75 @@ ollama ps
 nvidia-smi
 ~~~
 
-Sur la RTX 4090 utilisée pour cette procédure, les mesures suivantes ont été observées pendant une inférence :
+Sur la RTX 4090 utilisée pour cette procédure, les mesures suivantes ont été observées **avec la configuration 32K** :
 
 | Mesure | Résultat observé |
 | --- | --- |
 | Modèle chargé | <code>igorls/gemma-4-12B-it-heretic-GGUF:Q8_0</code> |
 | Taille annoncée par <code>ollama ps</code> | 13 Go |
 | <code>PROCESSOR</code> | **100% GPU** |
-| <code>CONTEXT</code> | **32768** |
+| <code>CONTEXT</code> | **32768 (test 32K)** |
 | Mémoire NVIDIA totale utilisée | **14 205 Mio / 24 564 Mio** |
 | Activité GPU instantanée | 94 % |
 | Puissance instantanée | 444 W |
 | Température instantanée | 54 °C |
 
-Ces valeurs sont un **instantané**, pas un résultat de benchmark reproductible. Le modèle peut apparaître sous son nom d'origine dans <code>ollama ps</code> même lorsqu'il a été appelé par son alias personnalisé.
+Ces valeurs sont un **instantané de la configuration 32K**, pas un résultat de benchmark reproductible. Aucune mesure GPU équivalente n'a encore été communiquée pour 64K. Le modèle peut apparaître sous son nom d'origine dans <code>ollama ps</code> même lorsqu'il a été appelé par son alias personnalisé.
 
 ### Valider les outils de Claude Code
 
-Dans un dépôt de test ou un projet dont les fichiers sont sauvegardés, demander :
+Dans un dépôt de test ou un projet dont les fichiers sont sauvegardés, nettoyer d'abord le contexte :
 
-> Analyse le répertoire courant. Identifie son langage, sa structure et ses dépendances. N'effectue aucune modification.
+~~~text
+/clear
+~~~
 
-Cela permet de vérifier la lecture et l'appel d'outils. **Ne pas confier immédiatement des modifications irréversibles à un modèle 12B** : les agents locaux peuvent mal sélectionner un outil, interpréter une sortie ou modifier un fichier.
+Puis utiliser une consigne **en lecture seule**, avec des sorties bornées :
 
-## 7. Dépannage
+> Analyse le projet dans le répertoire courant, en lecture seule. Commence par identifier le langage et les fichiers de configuration principaux. Limite les listes à 60 fichiers et les lectures à 100 lignes par fichier. Ignore .git, node_modules, les dépendances installées et les fichiers générés. Examine ensuite uniquement les fichiers nécessaires. Ne modifie aucun fichier. Présente un rapport technique concis.
+
+Cette limitation des lectures réduit la quantité de texte renvoyée par les outils. **Ne pas confier immédiatement des modifications irréversibles à un modèle 12B** : l'appel d'outils, la compréhension et le texte généré sont trois capacités distinctes.
+
+## 7. Retour d'expérience : essai réel avec Claude Code 64K
+
+Test effectué sur un projet local de configuration HDR pour un téléviseur LG C4, placé dans <code>~/lg-c4-hdr</code>. Ce dossier sert uniquement de banc d'essai ; il n'est pas nécessaire à l'installation d'Ollama.
+
+| Observation | Résultat du test |
+| --- | --- |
+| Profil initial 32K | Erreur <code>Autocompact is thrashing</code> pendant l'exploration |
+| Profil utilisé pour le second essai | <code>gemma4-heretic-64k</code> |
+| Nouvelle conversation | <code>/clear</code> exécuté |
+| Consigne | Analyse en lecture seule, listes et fichiers limités |
+| Exécution visible | 36 secondes de réflexion affichées, 1 recherche, 4 fichiers lus |
+| Résultat | Rapport technique produit, sans nouvelle erreur Autocompact visible |
+| Qualité | Rapport partiellement incohérent, phrases tronquées et affirmation non vérifiées |
+
+Le rapport a correctement identifié un **projet Python** utilisant notamment <code>asyncio</code> et la bibliothèque <code>bscpylgtv</code>, selon sa propre sortie. Toutefois, certaines phrases étaient altérées :
+
+~~~text
+Le moteur principal conte, de connexion, de validation etd'application des paramètres.
+Répertoire de persistance stockann), les rapports de résultats...
+~~~
+
+Ces extraits établissent un **défaut de qualité de sortie**. Les affirmations concernant le fonctionnement détaillé du code ne peuvent pas être considérées comme vérifiées sans lire les fichiers sources.
+
+**Interprétation :** une exécution d'outils réussie ne suffit pas à démontrer la fiabilité de l'agent. Le second essai a modifié **deux facteurs à la fois** — le contexte de 32K à 64K et les limites des lectures — et ne permet donc pas d'attribuer l'amélioration au seul changement de fenêtre. Pour comparer proprement, reproduire les mêmes demandes et limites sur les deux profils.
+
+## 8. Dépannage
 
 | Symptôme | Cause ou vérification |
 | --- | --- |
 | <code>ollama.service could not be found</code> | Ollama peut être installé via Snap ; utiliser <code>sudo snap services ollama</code> |
 | <code>claude is not installed</code> depuis <code>ollama launch</code> | Vérifier <code>command -v claude</code> côté hôte, puis utiliser la connexion manuelle |
 | Avertissement sur deux clés API | Supprimer <code>ANTHROPIC_API_KEY</code> de l'environnement de lancement |
-| Modèle inconnu, contexte supposé à 200K | Définir <code>CLAUDE_CODE_MAX_CONTEXT_TOKENS=32768</code> et vérifier <code>ollama ps</code> |
+| Modèle inconnu, contexte supposé à 200K | Définir <code>CLAUDE_CODE_MAX_CONTEXT_TOKENS=65536</code> pour le profil 64K et vérifier <code>ollama ps</code> |
+| <code>Autocompact is thrashing</code> | Exécuter <code>/clear</code>, limiter taille et nombre des lectures ; essayer 64K en surveillant la VRAM |
+| Rapport incohérent ou tronqué | Réduire les sorties, demander des références précises aux fichiers et contrôler les affirmations dans le code source |
 | <code>ollama ps</code> affiche du CPU | Le modèle ou son cache dépasse la VRAM disponible ; fermer d'autres charges, réduire le contexte ou essayer Q4 |
 | Claude Code n'exécute pas correctement ses outils | Vérifier l'API locale, la taille du contexte, les capacités <code>tools</code> et essayer un modèle spécialisé pour le code |
 | Le modèle ne répond pas | Vérifier <code>curl -i http://127.0.0.1:11434/api/version</code> et l'état du service Snap |
 
-## 8. Gestion et retour arrière
+## 9. Gestion et retour arrière
 
 Afficher les modèles :
 
@@ -319,13 +377,13 @@ ollama list
 Arrêter un modèle chargé en mémoire :
 
 ~~~bash
-ollama stop gemma4-heretic-32k
+ollama stop gemma4-heretic-64k
 ~~~
 
-Supprimer **uniquement l'alias** personnalisé si celui-ci n'est plus nécessaire :
+Supprimer **uniquement le nouvel alias 64K** si celui-ci n'est plus nécessaire (le profil 32K peut être conservé) :
 
 ~~~bash
-ollama rm gemma4-heretic-32k
+ollama rm gemma4-heretic-64k
 ~~~
 
 Pour supprimer également le modèle d'origine (après s'être assuré qu'aucun alias ne l'utilise plus) :
@@ -349,4 +407,5 @@ Ne pas exécuter de commande de désinstallation globale si d'autres modèles lo
 
 | Date | Modification |
 | --- | --- |
+| 2026-11-08 | Mise à jour : essai Claude Code à 64K, arrêt des erreurs Autocompact dans un test court, limites du rapport et précautions VRAM documentés |
 | 2026-11-08 | Première publication : Gemma 4 Heretic Q8_0, contexte 32K et inférence RTX 4090 validés sur Ollama Snap ; connexion manuelle à Claude Code documentée |
