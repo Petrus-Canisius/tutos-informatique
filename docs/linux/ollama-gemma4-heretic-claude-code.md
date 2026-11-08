@@ -13,6 +13,8 @@ Installer et exécuter **Gemma 4 Heretic 12B**, un modèle communautaire dit *ab
 
 Cette procédure distingue volontairement **Ollama installé avec Snap** de l'installation classique : les noms des services et les commandes de configuration ne sont pas identiques.
 
+**Accès rapide :** [mémento des commandes de démarrage, d'arrêt, de vérification et de dépannage](#10-memento-des-commandes-utiles).
+
 ## Informations générales
 
 | Élément | Configuration utilisée pour la vérification |
@@ -394,9 +396,195 @@ ollama rm igorls/gemma-4-12B-it-heretic-GGUF:Q8_0
 
 Ne pas exécuter de commande de désinstallation globale si d'autres modèles locaux sont encore utilisés. Quitter Claude Code avec <code>/exit</code>, puis le relancer normalement depuis un nouveau terminal pour retrouver sa configuration habituelle.
 
+## 10. Mémento des commandes utiles
+
+Les commandes ci-dessous correspondent à la configuration utilisée dans ce tutoriel : **Ollama installé via Snap**, **Gemma 4 Heretic Q8_0** et **Claude Code installé séparément**. Les commandes <code>sudo snap</code> agissent sur le **service Ollama** ; les commandes <code>ollama</code> agissent sur les **modèles** ; les commandes avec <code>claude</code> agissent sur **Claude Code**.
+
+### A. Démarrer, arrêter et redémarrer le serveur Ollama (Snap)
+
+| Action | Commande |
+| --- | --- |
+| Vérifier les services Ollama | <code>sudo snap services ollama</code> |
+| **Démarrer le serveur** | <code>sudo snap start ollama</code> |
+| **Arrêter le serveur** | <code>sudo snap stop ollama</code> |
+| Redémarrer le serveur | <code>sudo snap restart ollama</code> |
+| Voir les journaux récents | <code>sudo snap logs -n 50 ollama</code> |
+| Consulter la version installée | <code>snap list ollama</code> |
+| Actualiser le paquet Snap | <code>sudo snap refresh ollama</code> |
+
+~~~bash
+# Arrêter le serveur Ollama (et donc les inférences en cours)
+sudo snap stop ollama
+
+# Vérifier l'état après arrêt
+sudo snap services ollama
+
+# Le redémarrer ultérieurement
+sudo snap start ollama
+~~~
+
+!!! important "Arrêt du serveur ≠ suppression des modèles"
+    <code>sudo snap stop ollama</code> **ne supprime aucun modèle**. Il arrête le service. Pour le laisser désactivé après le prochain démarrage d'Ubuntu, une opération distincte existe : <code>sudo snap stop --disable ollama</code>, puis <code>sudo snap start --enable ollama</code> pour rétablir le démarrage automatique. **Ne pas utiliser <code>--disable</code> pour un simple arrêt temporaire.**
+
+!!! note "Le serveur doit fonctionner pour les commandes Ollama"
+    Après <code>sudo snap stop ollama</code>, les commandes <code>ollama ps</code>, <code>ollama list</code> ou <code>ollama run</code> peuvent échouer avec une erreur de connexion : c'est normal. Redémarrer d'abord le service.
+
+### B. Consulter, lancer et arrêter les modèles
+
+~~~bash
+# Version du client
+ollama --version
+
+# Modèles disponibles
+ollama list
+
+# Modèles actuellement chargés en mémoire
+ollama ps
+
+# Détails du modèle Q8 téléchargé
+ollama show igorls/gemma-4-12B-it-heretic-GGUF:Q8_0
+
+# Lancer le profil 64K
+ollama run gemma4-heretic-64k
+
+# Lancer le profil 32K
+ollama run gemma4-heretic-32k
+~~~
+
+Dans une conversation <code>ollama run</code>, utiliser <code>/set nothink</code> pour désactiver la réflexion, puis <code>/bye</code> pour quitter l'interface.
+
+~~~bash
+# Décharger l'alias 64K de la mémoire GPU
+ollama stop gemma4-heretic-64k
+
+# Décharger l'alias 32K
+ollama stop gemma4-heretic-32k
+
+# Si la commande indique que l'alias n'est pas chargé,
+# relever le nom exact dans « ollama ps » et l'utiliser ici :
+ollama ps
+~~~
+
+Lors de la validation, <code>ollama ps</code> affichait parfois le **nom d'origine** <code>igorls/gemma-4-12B-it-heretic-GGUF:Q8_0</code> plutôt que l'alias. Dans ce cas, arrêter le nom réellement affiché :
+
+~~~bash
+ollama stop igorls/gemma-4-12B-it-heretic-GGUF:Q8_0
+~~~
+
+**Différence :** <code>ollama stop</code> libère un modèle chargé en mémoire ; <code>sudo snap stop ollama</code> arrête le serveur entier.
+
+### C. Télécharger et créer les profils 32K / 64K
+
+~~~bash
+# Télécharger Gemma 4 Heretic Q8_0
+ollama pull igorls/gemma-4-12B-it-heretic-GGUF:Q8_0
+
+# Recréer le profil 32K (Modelfile déjà créé dans ce guide)
+ollama create gemma4-heretic-32k \
+  -f "$HOME/Modelfile.gemma4-heretic"
+
+# Recréer le profil 64K (Modelfile déjà créé dans ce guide)
+ollama create gemma4-heretic-64k \
+  -f "$HOME/Modelfile.gemma4-heretic-64k"
+~~~
+
+Les chemins des deux Modelfiles ci-dessus supposent que les étapes de création de la [section 4](#4-adapter-la-fenetre-de-contexte-passer-de-32k-a-64k) ont déjà été exécutées.
+
+### D. Lancer Claude Code sur le modèle local 64K
+
+Se placer dans le projet à analyser, puis exécuter la commande dans le terminal **hôte** (et non dans le shell confiné du Snap) :
+
+~~~bash
+cd /chemin/vers/mon-projet
+
+env -u ANTHROPIC_API_KEY \
+  ANTHROPIC_BASE_URL=http://127.0.0.1:11434 \
+  ANTHROPIC_AUTH_TOKEN=ollama \
+  ANTHROPIC_DEFAULT_OPUS_MODEL=gemma4-heretic-64k \
+  ANTHROPIC_DEFAULT_SONNET_MODEL=gemma4-heretic-64k \
+  ANTHROPIC_DEFAULT_HAIKU_MODEL=gemma4-heretic-64k \
+  CLAUDE_CODE_SUBAGENT_MODEL=gemma4-heretic-64k \
+  CLAUDE_CODE_MAX_CONTEXT_TOKENS=65536 \
+  CLAUDE_CODE_MAX_OUTPUT_TOKENS=4096 \
+  MAX_THINKING_TOKENS=0 \
+  CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 \
+  claude --model gemma4-heretic-64k
+~~~
+
+Remplacer <code>/chemin/vers/mon-projet</code> par **un dossier existant**. La commande n'installe pas Claude Code et ne modifie pas sa configuration permanente. Le serveur Ollama doit être **actif**.
+
+Pour revenir au profil 32K, utiliser la même commande en remplaçant **toutes** les occurrences de <code>gemma4-heretic-64k</code> par <code>gemma4-heretic-32k</code> et <code>65536</code> par <code>32768</code>.
+
+### E. Commandes dans Claude Code
+
+Ces commandes se tapent **dans Claude Code**, pas dans le shell Bash :
+
+| Action | Commande |
+| --- | --- |
+| Vérifier le modèle et le fournisseur configurés | <code>/status</code> |
+| Examiner l'occupation de la fenêtre de contexte | <code>/context</code> |
+| Réinitialiser la conversation avant une nouvelle analyse | <code>/clear</code> |
+| **Quitter Claude Code** | <code>/exit</code> |
+
+Si l'invite du terminal affiche un avertissement d'authentification, vérifier qu'il n'y a pas simultanément <code>ANTHROPIC_AUTH_TOKEN</code> et <code>ANTHROPIC_API_KEY</code>. La commande de la section D retire cette dernière variable **pour ce lancement seulement**.
+
+### F. Vérifier le GPU NVIDIA et le serveur HTTP
+
+~~~bash
+# Informations instantanées du GPU
+nvidia-smi
+
+# Suivi GPU toutes les secondes (Ctrl+C pour interrompre)
+nvidia-smi -l 1
+
+# Vérifier le placement et le contexte des modèles
+ollama ps
+
+# Vérifier que le serveur répond sur l'interface locale
+curl --fail --silent --show-error \
+  http://127.0.0.1:11434/api/version
+
+# Vérifier l'écoute sur le port local 11434
+sudo ss -lntp '( sport = :11434 )'
+
+# Si nécessaire, vérifier l'état du service et ses journaux
+sudo snap services ollama
+sudo snap logs -n 50 ollama
+~~~
+
+**Résultat attendu :** une réponse d'API, un processus à l'écoute sur <code>127.0.0.1:11434</code> et, pendant l'inférence, un modèle visible dans <code>ollama ps</code>. <code>100% GPU</code> confirme que les couches du modèle sont placées sur le GPU. Le contexte <code>65536</code> doit être contrôlé séparément pour le profil 64K.
+
+### G. Libérer de l'espace disque (suppression volontaire)
+
+!!! danger "Ces commandes suppriment des modèles locaux"
+    Elles ne sont **pas nécessaires** pour arrêter Ollama ni pour libérer temporairement de la VRAM. Ne les exécuter que si les profils ou les poids ne sont plus utiles.
+
+~~~bash
+# Supprimer l'alias 64K
+ollama rm gemma4-heretic-64k
+
+# Supprimer l'alias 32K
+ollama rm gemma4-heretic-32k
+
+# Supprimer le modèle téléchargé (si aucun alias ne doit le conserver)
+ollama rm igorls/gemma-4-12B-it-heretic-GGUF:Q8_0
+~~~
+
+Supprimer un alias n'implique pas nécessairement de libérer 13 Go : les couches communes restent sur disque tant qu'un autre modèle en dépend.
+
+### H. Arrêt normal d'une session de travail
+
+1. Dans Claude Code, saisir <code>/exit</code>.
+2. Dans le terminal Ubuntu, décharger le modèle avec <code>ollama stop gemma4-heretic-64k</code> (ou le nom indiqué par <code>ollama ps</code>).
+3. Pour **arrêter également le serveur** : <code>sudo snap stop ollama</code>.
+4. À la prochaine utilisation : <code>sudo snap start ollama</code>, puis relancer Claude Code avec la commande de la section D.
+
+L'arrêt de Claude Code ne supprime aucun modèle. Ollama peut garder un modèle en mémoire pendant une courte durée après la dernière requête, jusqu'à son expiration automatique ou un <code>ollama stop</code>.
+
 ## Références
 
 - [Ollama — site officiel et installation](https://ollama.com/)
+- [Snapcraft — contrôler les services Snap](https://snapcraft.io/docs/how-to-guides/manage-snaps/control-services/)
 - [Ollama — Gemma 4 Heretic, variantes Q4 et Q8](https://ollama.com/igorls/gemma-4-12B-it-heretic-GGUF/tags)
 - [Ollama — intégration de Claude Code](https://docs.ollama.com/integrations/claude-code)
 - [Ollama — compatibilité avec l'API Anthropic](https://docs.ollama.com/api/anthropic-compatibility)
@@ -407,5 +595,6 @@ Ne pas exécuter de commande de désinstallation globale si d'autres modèles lo
 
 | Date | Modification |
 | --- | --- |
+| 2026-11-08 | Ajout d'un mémento des commandes : démarrer et arrêter Ollama Snap, modèles, Claude Code, GPU, API et gestion du disque |
 | 2026-11-08 | Mise à jour : essai Claude Code à 64K, arrêt des erreurs Autocompact dans un test court, limites du rapport et précautions VRAM documentés |
 | 2026-11-08 | Première publication : Gemma 4 Heretic Q8_0, contexte 32K et inférence RTX 4090 validés sur Ollama Snap ; connexion manuelle à Claude Code documentée |
