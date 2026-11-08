@@ -36,7 +36,7 @@ nav = [
       { "Glossaire" = "windows-server/formation-2025/glossaire.md" }
     ] }
   ] },
-    { "Linux" = ["linux/index.md", { "CyberGhost VPN sur Ubuntu" = "linux/cyberghost-vpn-ubuntu.md" }, { "Brave : réparer un profil verrouillé" = "linux/brave-profil-verrouille.md" }] },
+    { "Linux" = ["linux/index.md", { "CyberGhost VPN sur Ubuntu" = "linux/cyberghost-vpn-ubuntu.md" }, { "Gemma 4 Heretic et Claude Code en local" = "linux/ollama-gemma4-heretic-claude-code.md" }, { "Brave : réparer un profil verrouillé" = "linux/brave-profil-verrouille.md" }] },
     { "Réseaux" = "reseaux/index.md" },
     { "Virtualisation" = "virtualisation/index.md" },
     { "PowerShell et automatisation" = "powershell/index.md" },
