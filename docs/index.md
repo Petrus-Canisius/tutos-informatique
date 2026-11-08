@@ -17,7 +17,7 @@ hide:
     <div class="kb-latest-content">
       <p class="kb-latest-overline" id="kb-latest-heading">DERNIÈRE PROCÉDURE PUBLIÉE</p>
       <h2 data-latest-title>Exécuter Gemma 4 Heretic en local avec Ollama et Claude Code</h2>
-      <p class="kb-latest-description" data-latest-description>Exécuter une IA locale sur GPU NVIDIA avec Ollama Snap, Gemma 4 Heretic Q8 et Claude Code.</p>
+      <p class="kb-latest-description" data-latest-description>Exécuter Gemma 4 Heretic Q8 sur GPU NVIDIA avec Claude Code : configuration 64K, dépannage et retour d’expérience.</p>
       <p class="kb-latest-publication">Publiée le <time datetime="2026-11-08" data-latest-date>8 novembre 2026</time></p>
     </div>
     <a class="kb-latest-link" href="linux/ollama-gemma4-heretic-claude-code/" data-latest-link>Voir le tutoriel <span aria-hidden="true">→</span></a>
