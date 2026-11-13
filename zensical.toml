@@ -14,7 +14,7 @@ nav = [
   { "Catégories" = [
     { "Déploiement et gestion de parc" = ["deploiement/index.md", { "FOG Project" = "deploiement/fog-installation.md" }] },
     { "Windows" = ["windows/index.md", { "Microsoft Activation Scripts (MAS)" = "windows/microsoft-activation-scripts.md" }, { "Installer Windows 11 sans compte Microsoft" = "windows/installation-compte-local.md" }, { "yt-dlp : téléchargement multimédia" = "windows/yt-dlp.md" }] },
-    { "Linux" = ["linux/index.md", { "CyberGhost VPN sur Ubuntu" = "linux/cyberghost-vpn-ubuntu.md" }, { "Gemma 4 Heretic et Claude Code en local" = "linux/ollama-gemma4-heretic-claude-code.md" }, { "Brave : réparer un profil verrouillé" = "linux/brave-profil-verrouille.md" }] },
+    { "Linux" = ["linux/index.md", { "CyberGhost VPN sur Ubuntu" = "linux/cyberghost-vpn-ubuntu.md" }, { "Gemma 4 Heretic et Claude Code en local" = "linux/ollama-gemma4-heretic-claude-code.md" }, { "Qwen 27B et Claude Code sur RTX 4090" = "linux/ollama-qwen-27b-claude-code.md" }, { "Brave : réparer un profil verrouillé" = "linux/brave-profil-verrouille.md" }] },
     { "Réseaux" = "reseaux/index.md" },
     { "Virtualisation" = "virtualisation/index.md" },
     { "PowerShell et automatisation" = "powershell/index.md" },
