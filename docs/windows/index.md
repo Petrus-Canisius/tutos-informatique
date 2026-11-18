@@ -12,8 +12,8 @@ description: Procédures Windows 11, maintenance, configuration et outils en lig
 <div class="dl-index-card">
   <div>
     <span class="dl-index-eyebrow">WINDOWS · NTFS · UBUNTU</span>
-    <h2><a href="reparer-ntfs-apres-coupure/">Réparer un disque NTFS après une coupure de courant</a></h2>
-    <p>Analyser un volume avec CHKDSK sous Windows, appliquer la réparation ciblée /spotfix si elle est recommandée, puis le reconnecter sous Ubuntu.</p>
+    <h2><a href="reparer-ntfs-apres-coupure/">Réparer un volume NTFS refusé par Ubuntu</a></h2>
+    <p>Analyser un volume avec CHKDSK sous Windows, appliquer /spotfix si cette réparation est recommandée, puis réessayer sous Ubuntu.</p>
     <div class="dl-index-tags"><span>NTFS</span><span>CHKDSK</span><span>Ubuntu</span><span>Dépannage</span></div>
     <a class="dl-index-link" href="reparer-ntfs-apres-coupure/">Consulter la procédure →</a>
   </div>
