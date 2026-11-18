@@ -1,5 +1,5 @@
 ---
-title: Réparer un disque NTFS après une coupure de courant
+title: Réparer un volume NTFS refusé par Ubuntu
 description: Diagnostiquer sous Windows un volume NTFS que Ubuntu refuse de monter, puis appliquer la correction ciblée proposée par CHKDSK.
 tags:
   - Windows
@@ -8,13 +8,13 @@ tags:
   - CHKDSK
 ---
 
-# Réparer un disque NTFS après une coupure de courant
+# Réparer un volume NTFS refusé par Ubuntu
 
 <div class="kb-doc-meta"><span>Windows</span><span>Ubuntu</span><span>NTFS</span><span>Dépannage</span></div>
 
 ## Objectif
 
-Après une coupure de courant, Ubuntu peut refuser de monter un disque NTFS et afficher une erreur générique (« mauvais type de système de fichiers », « mauvais superbloc » ou « programme d’aide manquant »). Si les fichiers restent lisibles sous Windows, le volume peut être marqué comme incorrectement arrêté ou contenir une incohérence NTFS.
+Ubuntu peut refuser de monter un volume NTFS et afficher une erreur générique (« mauvais type de système de fichiers », « mauvais superbloc » ou « programme d’aide manquant »). Si le volume reste lisible sous Windows, CHKDSK peut vérifier sa structure et proposer une réparation ciblée.
 
 Cette procédure utilise d’abord l’analyse en ligne de CHKDSK, puis la réparation hors connexion ciblée uniquement si Windows la demande.
 
