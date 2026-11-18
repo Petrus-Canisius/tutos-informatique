@@ -11,6 +11,16 @@ description: Procédures Windows 11, maintenance, configuration et outils en lig
 
 <div class="dl-index-card">
   <div>
+    <span class="dl-index-eyebrow">WINDOWS · NTFS · UBUNTU</span>
+    <h2><a href="reparer-ntfs-apres-coupure/">Réparer un disque NTFS après une coupure de courant</a></h2>
+    <p>Analyser un volume avec CHKDSK sous Windows, appliquer la réparation ciblée /spotfix si elle est recommandée, puis le reconnecter sous Ubuntu.</p>
+    <div class="dl-index-tags"><span>NTFS</span><span>CHKDSK</span><span>Ubuntu</span><span>Dépannage</span></div>
+    <a class="dl-index-link" href="reparer-ntfs-apres-coupure/">Consulter la procédure →</a>
+  </div>
+</div>
+
+<div class="dl-index-card">
+  <div>
     <span class="dl-index-eyebrow">WINDOWS · POWERSHELL · SÉCURITÉ</span>
     <h2><a href="microsoft-activation-scripts/">Comprendre et utiliser Microsoft Activation Scripts (MAS)</a></h2>
     <p>Explication de la commande irm | iex, contrôle de la provenance du script, méthodes annoncées par MAS et vérification du statut d’activation Windows.</p>
